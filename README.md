@@ -85,3 +85,26 @@ string. Generated models preserve unknown fields and wire-name aliases.
 `backup/prototype/` is a historical, non-installed snapshot of the handwritten
 prototype and its two model tests. It is not a runnable SDK and is not used by
 the generator or package.
+
+## Current status and direction
+
+This repository remains the generic, typed Azure DevOps SDK: six generated
+services and 298 operations. The latest reported offline test baseline is 378
+tests; pagination is not automatic, although response headers (including
+continuation information) are preserved. SDK-wide compatibility with a live
+on-premises Azure DevOps Server deployment has not been validated. Logging is
+implemented as privacy-conscious structured DEBUG events; tracing and metrics
+are not implemented and are paused, not a current priority.
+
+Planned consumers include a CLI, MCP server, analysis/Prometheus exporter, and
+operational jobs such as stale-branch cleanup and nonstandard-pipeline support.
+The chosen direction is to keep this SDK focused on generic API calls and
+transport, and put those tools and their shared business logic in a separate
+tooling repository. That repository does not exist yet, and none of those
+consumers/jobs has been implemented here. For the first tooling increment,
+prefer a thin read-only inventory CLI and establish which workflows need
+pagination before adding it. Validate reads against the target deployment
+before making broader compatibility claims. Cleanup automation, when pursued,
+should discover and report candidates first, support dry-run, protect branches,
+and recheck immediately before deletion; it is not authorized or implemented by
+this roadmap.
