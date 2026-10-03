@@ -45,6 +45,37 @@ JSON/binary responses default to JSON and are annotated as a union of the
 schema model and `bytes`; binary-only endpoints default to their binary media
 type. The transport owns the organization and API version.
 
+## Logging
+
+The SDK emits one completion event per transport request on the
+`azure_devops_sdk.transport` logger. Successful calls are logged at `DEBUG`
+with `event="request.completed"`; failed calls use `event="request.failed"`
+at the same level. The record provides `sdk_service`, `sdk_operation`,
+`http_method`, `route_template`, `status_code`, `duration_ms`, `outcome`, and
+`error_type` attributes. Direct transport calls may have no service, operation,
+or route template. Error categories are bounded (`http_error`, `timeout`,
+`connection_error`, `transport_error`, `invalid_json`, `validation_error`,
+`request_error`, `unexpected_error`); HTTP and parsing failures remain the
+application's responsibility. The package installs a `NullHandler` only; it
+does not configure logging output or alter root logger settings. Configure
+formatting/handlers in the consuming application, for example:
+
+```python
+import logging
+
+logging.basicConfig(level=logging.WARNING)
+logging.getLogger("azure_devops_sdk").setLevel(logging.DEBUG)
+```
+
+Events intentionally omit URLs, path values, query parameters, request/response
+bodies and headers, credentials, and exception text/tracebacks. The route
+template is emitted only by generated wrappers; manually invoked transport
+requests leave it unset unless the caller explicitly supplies safe metadata.
+Other HTTP libraries may log full URLs independently; configure their loggers
+separately rather than enabling global DEBUG output.
+The SDK supplies ordinary `LogRecord` attributes rather than prescribing a
+JSON formatter or telemetry exporter.
+
 Explicit schema overlays address known malformed source shapes:
 `JsonPatchDocument` is an array of `JsonPatchOperation`; its `value` accepts
 arbitrary JSON; `PolicyConfiguration.settings` is a JSON object with arbitrary

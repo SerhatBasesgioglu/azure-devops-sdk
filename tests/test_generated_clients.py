@@ -114,7 +114,7 @@ def test_manifest_operations_match_source_operation_ids_raw_paths_and_verbs(modu
     ],
     ids=lambda value: value if isinstance(value, str) else None,
 )
-def test_every_generated_method_sends_its_declared_request(module: str, operation: dict[str, Any]):
+def test_every_generated_method_sends_its_declared_request(module: str, operation: dict[str, Any], caplog):
     api_module = importlib.import_module(f"azure_devops_sdk.{module}.client")
     api_class = getattr(api_module, API_CLASSES[module])
     captured: list[httpx.Request] = []
@@ -149,9 +149,16 @@ def test_every_generated_method_sends_its_declared_request(module: str, operatio
         # accepted by the transport for generated body arguments.
         if operation["body"] is not None:
             kwargs["body"] = {"synthetic": True}
+        caplog.set_level(10, logger="azure_devops_sdk.transport")
+        caplog.clear()
         api_response = method(**kwargs)
 
         assert api_response.status_code == 204
+        sdk_records = [record for record in caplog.records if record.name == "azure_devops_sdk.transport"]
+        assert len(sdk_records) == 1
+        assert sdk_records[0].sdk_service == module
+        assert sdk_records[0].sdk_operation == operation["python_method"]
+        assert sdk_records[0].route_template == operation["path"]
         assert len(captured) == 1
         request = captured[0]
         assert request.method == operation["method"]

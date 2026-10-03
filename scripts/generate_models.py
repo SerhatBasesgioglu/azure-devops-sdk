@@ -221,7 +221,7 @@ def _make_api(module: str, spec: dict[str, Any]) -> tuple[str, dict[str, Any]]:
             call_args.append("body=body")
         consumes = operation.get("consumes", spec.get("consumes", []))
         content_type = consumes[0] if body and consumes else "application/json" if body else None
-        call_args += [f"content_type={content_type!r}", f"accept=accept", f"response_type={response_type}", f"binary={binary!r}"]
+        call_args += [f"content_type={content_type!r}", f"accept=accept", f"response_type={response_type}", f"binary={binary!r}", f"service={module!r}", f"operation={name!r}", f"route_template={route_path!r}"]
         doc = f"{operation_id}. Use accept={accept_default!r}" + (" for the default binary representation; pass another accepted media type for alternate representations." if binary else ".")
         lines = [f"    def {name}(self, *, {', '.join(signature)}{', ' if signature else ''}accept: str = {accept_default!r}) -> ApiResponse[{response_type}]:", f"        {json.dumps(doc)}", f"        return self._transport.request({verb.upper()!r}, {path_expr}, {', '.join(call_args)})"]
         methods.extend(lines)

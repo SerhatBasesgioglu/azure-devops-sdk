@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
+import time
 from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import date, datetime
@@ -14,7 +16,9 @@ from urllib.parse import quote, urlsplit
 from uuid import UUID
 
 import httpx
-from pydantic import BaseModel, TypeAdapter
+from pydantic import BaseModel, TypeAdapter, ValidationError
+
+_logger = logging.getLogger("azure_devops_sdk.transport")
 
 T = TypeVar("T")
 
@@ -185,49 +189,98 @@ class AdoTransport:
         accept: str = "application/json",
         response_type: Any = Any,
         binary: bool = False,
+        service: str | None = None,
+        operation: str | None = None,
+        route_template: str | None = None,
     ) -> ApiResponse[Any]:
-        route = self._route(path, path_params)
-        params = self._query_params(query, query_formats)
-        # The transport owns api-version: caller-provided values cannot override it.
-        params = [(key, value) for key, value in params if key != "api-version"]
-        params.append(("api-version", self.api_version))
-        headers = {"Accept": accept}
-        request_kwargs: dict[str, Any] = {"params": params, "headers": headers}
-        if body is not UNSET:
-            if content_type and content_type.lower().split(";", 1)[0].strip() == "application/json-patch+json":
-                request_kwargs["content"] = json.dumps(_json_value(body), separators=(",", ":")).encode("utf-8")
-                headers["Content-Type"] = content_type
-            elif isinstance(body, bytes):
-                request_kwargs["content"] = body
-                headers["Content-Type"] = content_type or "application/octet-stream"
-            elif content_type and content_type.lower().split(";", 1)[0].strip() != "application/json":
-                request_kwargs["content"] = body if isinstance(body, (str, bytes)) else json.dumps(_json_value(body)).encode()
-                headers["Content-Type"] = content_type
-            else:
-                request_kwargs["content"] = json.dumps(_json_value(body), separators=(",", ":")).encode("utf-8")
-                headers["Content-Type"] = content_type or "application/json"
+        started = time.perf_counter()
+        status_code: int | None = None
+        outcome = "failure"
+        error_type: str | None = None
+        try:
+            route = self._route(path, path_params)
+            params = self._query_params(query, query_formats)
+            # The transport owns api-version: caller-provided values cannot override it.
+            params = [(key, value) for key, value in params if key != "api-version"]
+            params.append(("api-version", self.api_version))
+            headers = {"Accept": accept}
+            request_kwargs: dict[str, Any] = {"params": params, "headers": headers}
+            if body is not UNSET:
+                if content_type and content_type.lower().split(";", 1)[0].strip() == "application/json-patch+json":
+                    request_kwargs["content"] = json.dumps(_json_value(body), separators=(",", ":")).encode("utf-8")
+                    headers["Content-Type"] = content_type
+                elif isinstance(body, bytes):
+                    request_kwargs["content"] = body
+                    headers["Content-Type"] = content_type or "application/octet-stream"
+                elif content_type and content_type.lower().split(";", 1)[0].strip() != "application/json":
+                    request_kwargs["content"] = body if isinstance(body, (str, bytes)) else json.dumps(_json_value(body)).encode()
+                    headers["Content-Type"] = content_type
+                else:
+                    request_kwargs["content"] = json.dumps(_json_value(body), separators=(",", ":")).encode("utf-8")
+                    headers["Content-Type"] = content_type or "application/json"
 
-        response = self._client.request(method, route, **request_kwargs)
-        response.raise_for_status()
-        content = response.content
-        if not content:
-            data: Any = None
-        else:
-            media_type = response.headers.get("content-type", "").split(";", 1)[0].strip().lower()
-            accept_is_json = "json" in accept.lower() or "+json" in accept.lower()
-            if binary or not accept_is_json or (media_type and "json" not in media_type and "+json" not in media_type):
-                data = content
+            response = self._client.request(method, route, **request_kwargs)
+            status_code = response.status_code
+            response.raise_for_status()
+            content = response.content
+            if not content:
+                data: Any = None
             else:
-                parsed_data = response.json()
-                def has_list_branch(annotation: Any) -> bool:
-                    origin = get_origin(annotation)
-                    if origin is list:
-                        return True
-                    if origin in {UnionType, Union}:
-                        return any(has_list_branch(branch) for branch in get_args(annotation))
-                    return False
+                media_type = response.headers.get("content-type", "").split(";", 1)[0].strip().lower()
+                accept_is_json = "json" in accept.lower() or "+json" in accept.lower()
+                if binary or not accept_is_json or (media_type and "json" not in media_type and "+json" not in media_type):
+                    data = content
+                else:
+                    parsed_data = response.json()
 
-                if has_list_branch(response_type) and isinstance(parsed_data, dict) and isinstance(parsed_data.get("value"), list):
-                    parsed_data = parsed_data["value"]
-                data = parsed_data if response_type is Any else TypeAdapter(response_type).validate_python(parsed_data)
-        return ApiResponse(data=data, status_code=response.status_code, headers=response.headers, content=content)
+                    def has_list_branch(annotation: Any) -> bool:
+                        origin = get_origin(annotation)
+                        if origin is list:
+                            return True
+                        if origin in {UnionType, Union}:
+                            return any(has_list_branch(branch) for branch in get_args(annotation))
+                        return False
+
+                    if has_list_branch(response_type) and isinstance(parsed_data, dict) and isinstance(parsed_data.get("value"), list):
+                        parsed_data = parsed_data["value"]
+                    data = parsed_data if response_type is Any else TypeAdapter(response_type).validate_python(parsed_data)
+            result = ApiResponse(data=data, status_code=response.status_code, headers=response.headers, content=content)
+            outcome = "success"
+            return result
+        except Exception as exc:
+            if isinstance(exc, httpx.TimeoutException):
+                error_type = "timeout"
+            elif isinstance(exc, httpx.ConnectError):
+                error_type = "connection_error"
+            elif isinstance(exc, httpx.HTTPStatusError):
+                error_type = "http_error"
+            elif isinstance(exc, httpx.TransportError):
+                error_type = "transport_error"
+            elif isinstance(exc, json.JSONDecodeError):
+                error_type = "invalid_json"
+            elif isinstance(exc, ValidationError):
+                error_type = "validation_error"
+            elif isinstance(exc, httpx.RequestError):
+                error_type = "request_error"
+            else:
+                error_type = "unexpected_error" if not isinstance(exc, (ValueError, TypeError, KeyError)) else "request_error"
+            raise
+        finally:
+            fields = {
+                "sdk_service": service,
+                "sdk_operation": operation,
+                "http_method": method,
+                "route_template": route_template,
+                "status_code": status_code,
+                "duration_ms": max(0.0, (time.perf_counter() - started) * 1000),
+                "outcome": outcome,
+                "error_type": error_type,
+            }
+            try:
+                _logger.debug(
+                    "Azure DevOps request completed" if outcome == "success" else "Azure DevOps request failed",
+                    extra={"event": "request.completed" if outcome == "success" else "request.failed", **fields},
+                )
+            except Exception:
+                # Logging is observational and must never alter request behavior.
+                pass
