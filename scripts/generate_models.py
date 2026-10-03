@@ -16,6 +16,8 @@ from typing import Any
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 PACKAGE_DIR = REPOSITORY_ROOT / "src" / "azure_devops_sdk"
+
+
 @dataclass(frozen=True)
 class ServiceSpec:
     source: str
@@ -206,25 +208,47 @@ def _make_api(module: str, spec: dict[str, Any]) -> tuple[str, dict[str, Any]]:
             placeholder: next(arg for wire, arg in path_wire_to_arg.items() if wire.casefold() == placeholder.casefold())
             for placeholder in path_names
         }
-        call_args = [f"path_params={{{', '.join(repr(k) + ': ' + v for k, v in route_path_args.items())}}}" ] if route_path_args else []
+        call_args = []
+        if route_path_args:
+            entries = [f"{key!r}: {value}" for key, value in route_path_args.items()]
+            call_args.append(("path_params", entries))
         query_params = [(arg, wire) for arg, wire, loc, _, _ in parameters if loc == "query"]
         if query_params:
-            call_args.append(f"query={{{', '.join(repr(wire) + ': ' + arg for arg, wire in query_params)}}}")
+            entries = [f"{wire!r}: {arg}" for arg, wire in query_params]
+            call_args.append(("query", entries))
             formats = {}
             for raw in path_item.get("parameters", []) + operation.get("parameters", []):
                 p = _resolve(spec, raw)
                 if p.get("in") == "query" and p.get("name") in {wire for _, wire in query_params} and p.get("type") == "array":
                     formats[p["name"]] = p.get("collectionFormat", "csv")
             if formats:
-                call_args.append(f"query_formats={formats!r}")
+                call_args.append(("query_formats", repr(formats)))
         if body:
-            call_args.append("body=body")
+            call_args.append(("body", "body"))
         consumes = operation.get("consumes", spec.get("consumes", []))
         content_type = consumes[0] if body and consumes else "application/json" if body else None
-        call_args += [f"content_type={content_type!r}", f"accept=accept", f"response_type={response_type}", f"binary={binary!r}", f"service={module!r}", f"operation={name!r}", f"route_template={route_path!r}"]
+        call_args += [
+            ("content_type", repr(content_type)),
+            ("accept", "accept"),
+            ("response_type", response_type),
+            ("binary", repr(binary)),
+            ("service", repr(module)),
+            ("operation", repr(name)),
+            ("route_template", repr(route_path)),
+        ]
         doc = f"{operation_id}. Use accept={accept_default!r}" + (" for the default binary representation; pass another accepted media type for alternate representations." if binary else ".")
-        lines = [f"    def {name}(self, *, {', '.join(signature)}{', ' if signature else ''}accept: str = {accept_default!r}) -> ApiResponse[{response_type}]:", f"        {json.dumps(doc)}", f"        return self._transport.request({verb.upper()!r}, {path_expr}, {', '.join(call_args)})"]
+        method_signature = ["        self,", "        *,", *(f"        {param}," for param in signature), f"        accept: str = {accept_default!r},"]
+        lines = [f"    def {name}(", *method_signature, f"    ) -> ApiResponse[{response_type}]:", f"        {json.dumps(doc)}", "        return self._transport.request(", f"            {verb.upper()!r},", f"            {path_expr},"]
+        for key, value in call_args:
+            if isinstance(value, list):
+                lines.append(f"            {key}={{")
+                lines.extend(f"                {entry}," for entry in value)
+                lines.append("            },")
+            else:
+                lines.append(f"            {key}={value},")
+        lines.append("        )")
         methods.extend(lines)
+        methods.append("")
         manifest_ops.append({
             "operationId": operation_id, "source_id": operation.get("x-ms-vss-method", operation_id), "method": verb.upper(), "path": route_path,
             "source_path": route, "path_group": group, "python_method": name,
@@ -235,8 +259,21 @@ def _make_api(module: str, spec: dict[str, Any]) -> tuple[str, dict[str, Any]]:
             "produces": sorted({m for _, r in successes for m in r.get("produces", operation.get("produces", []))}),
         })
     source = "\n".join([
-        '"""Spec-generated Git/Pipelines REST methods."""', "from __future__ import annotations", "from typing import Any", "from uuid import UUID", "from azure_devops_sdk._transport import ApiResponse, AdoTransport", "from . import models", "",
-        "class " + SPECS[module].class_name + ":", "    def __init__(self, transport: AdoTransport) -> None:", "        self._transport = transport", "", *methods, "",
+        '"""Spec-generated Git/Pipelines REST methods."""',
+        "from __future__ import annotations",
+        "",
+        "from typing import Any",
+        "from uuid import UUID",
+        "",
+        "from azure_devops_sdk._transport import ApiResponse, AdoTransport",
+        "from . import models",
+        "",
+        "",
+        "class " + SPECS[module].class_name + ":",
+        "    def __init__(self, transport: AdoTransport) -> None:",
+        "        self._transport = transport",
+        "",
+        *methods,
     ])
     return source, {"operation_count": len(manifest_ops), "operations": manifest_ops}
 

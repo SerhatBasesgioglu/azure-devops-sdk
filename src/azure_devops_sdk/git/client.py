@@ -1,344 +1,3388 @@
 """Spec-generated Git/Pipelines REST methods."""
 from __future__ import annotations
+
 from typing import Any
 from uuid import UUID
+
 from azure_devops_sdk._transport import ApiResponse, AdoTransport
 from . import models
+
 
 class GitApi:
     def __init__(self, transport: AdoTransport) -> None:
         self._transport = transport
 
-    def repositories_get_deleted_repositories(self, *, project: str, accept: str = 'application/json') -> ApiResponse[list[models.GitDeletedRepository]]:
+    def repositories_get_deleted_repositories(
+        self,
+        *,
+        project: str,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitDeletedRepository]]:
         "Repositories_Get Deleted Repositories. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/deletedrepositories', path_params={'project': project}, content_type=None, accept=accept, response_type=list[models.GitDeletedRepository], binary=False, service='git', operation='repositories_get_deleted_repositories', route_template='/{project}/_apis/git/deletedrepositories')
-    def refs_favorites_create(self, *, project: str, body: models.GitRefFavorite, accept: str = 'application/json') -> ApiResponse[models.GitRefFavorite]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/deletedrepositories',
+            path_params={
+                'project': project,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitDeletedRepository],
+            binary=False,
+            service='git',
+            operation='repositories_get_deleted_repositories',
+            route_template='/{project}/_apis/git/deletedrepositories',
+        )
+
+    def refs_favorites_create(
+        self,
+        *,
+        project: str,
+        body: models.GitRefFavorite,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRefFavorite]:
         "Refs Favorites_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/favorites/refs', path_params={'project': project}, body=body, content_type='application/json', accept=accept, response_type=models.GitRefFavorite, binary=False, service='git', operation='refs_favorites_create', route_template='/{project}/_apis/git/favorites/refs')
-    def refs_favorites_list(self, *, project: str, repository_id: str | None = None, identity_id: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitRefFavorite]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/favorites/refs',
+            path_params={
+                'project': project,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitRefFavorite,
+            binary=False,
+            service='git',
+            operation='refs_favorites_create',
+            route_template='/{project}/_apis/git/favorites/refs',
+        )
+
+    def refs_favorites_list(
+        self,
+        *,
+        project: str,
+        repository_id: str | None = None,
+        identity_id: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitRefFavorite]]:
         "Refs Favorites_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/favorites/refs', path_params={'project': project}, query={'repositoryId': repository_id, 'identityId': identity_id}, content_type=None, accept=accept, response_type=list[models.GitRefFavorite], binary=False, service='git', operation='refs_favorites_list', route_template='/{project}/_apis/git/favorites/refs')
-    def refs_favorites_delete(self, *, project: str, favorite_id: int, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/favorites/refs',
+            path_params={
+                'project': project,
+            },
+            query={
+                'repositoryId': repository_id,
+                'identityId': identity_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitRefFavorite],
+            binary=False,
+            service='git',
+            operation='refs_favorites_list',
+            route_template='/{project}/_apis/git/favorites/refs',
+        )
+
+    def refs_favorites_delete(
+        self,
+        *,
+        project: str,
+        favorite_id: int,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Refs Favorites_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/favorites/refs/{favoriteId}', path_params={'project': project, 'favoriteId': favorite_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='refs_favorites_delete', route_template='/{project}/_apis/git/favorites/refs/{favoriteId}')
-    def refs_favorites_get(self, *, project: str, favorite_id: int, accept: str = 'application/json') -> ApiResponse[models.GitRefFavorite]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/favorites/refs/{favoriteId}',
+            path_params={
+                'project': project,
+                'favoriteId': favorite_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='refs_favorites_delete',
+            route_template='/{project}/_apis/git/favorites/refs/{favoriteId}',
+        )
+
+    def refs_favorites_get(
+        self,
+        *,
+        project: str,
+        favorite_id: int,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRefFavorite]:
         "Refs Favorites_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/favorites/refs/{favoriteId}', path_params={'project': project, 'favoriteId': favorite_id}, content_type=None, accept=accept, response_type=models.GitRefFavorite, binary=False, service='git', operation='refs_favorites_get', route_template='/{project}/_apis/git/favorites/refs/{favoriteId}')
-    def policy_configurations_get(self, *, project: str, repository_id: str | UUID | None = None, ref_name: str | None = None, policy_type: str | UUID | None = None, top: int | None = None, continuation_token: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.PolicyConfiguration]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/favorites/refs/{favoriteId}',
+            path_params={
+                'project': project,
+                'favoriteId': favorite_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitRefFavorite,
+            binary=False,
+            service='git',
+            operation='refs_favorites_get',
+            route_template='/{project}/_apis/git/favorites/refs/{favoriteId}',
+        )
+
+    def policy_configurations_get(
+        self,
+        *,
+        project: str,
+        repository_id: str | UUID | None = None,
+        ref_name: str | None = None,
+        policy_type: str | UUID | None = None,
+        top: int | None = None,
+        continuation_token: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.PolicyConfiguration]]:
         "Policy Configurations_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/policy/configurations', path_params={'project': project}, query={'repositoryId': repository_id, 'refName': ref_name, 'policyType': policy_type, '$top': top, 'continuationToken': continuation_token}, content_type=None, accept=accept, response_type=list[models.PolicyConfiguration], binary=False, service='git', operation='policy_configurations_get', route_template='/{project}/_apis/git/policy/configurations')
-    def pull_requests_get_pull_requests_by_project(self, *, project: str, search_criteria_creator_id: str | UUID | None = None, search_criteria_include_links: bool | None = None, search_criteria_repository_id: str | UUID | None = None, search_criteria_reviewer_id: str | UUID | None = None, search_criteria_source_ref_name: str | None = None, search_criteria_source_repository_id: str | UUID | None = None, search_criteria_status: str | None = None, search_criteria_target_ref_name: str | None = None, max_comment_length: int | None = None, skip: int | None = None, top: int | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitPullRequest]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/policy/configurations',
+            path_params={
+                'project': project,
+            },
+            query={
+                'repositoryId': repository_id,
+                'refName': ref_name,
+                'policyType': policy_type,
+                '$top': top,
+                'continuationToken': continuation_token,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.PolicyConfiguration],
+            binary=False,
+            service='git',
+            operation='policy_configurations_get',
+            route_template='/{project}/_apis/git/policy/configurations',
+        )
+
+    def pull_requests_get_pull_requests_by_project(
+        self,
+        *,
+        project: str,
+        search_criteria_creator_id: str | UUID | None = None,
+        search_criteria_include_links: bool | None = None,
+        search_criteria_repository_id: str | UUID | None = None,
+        search_criteria_reviewer_id: str | UUID | None = None,
+        search_criteria_source_ref_name: str | None = None,
+        search_criteria_source_repository_id: str | UUID | None = None,
+        search_criteria_status: str | None = None,
+        search_criteria_target_ref_name: str | None = None,
+        max_comment_length: int | None = None,
+        skip: int | None = None,
+        top: int | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitPullRequest]]:
         "Pull Requests_Get Pull Requests By Project. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/pullrequests', path_params={'project': project}, query={'searchCriteria.creatorId': search_criteria_creator_id, 'searchCriteria.includeLinks': search_criteria_include_links, 'searchCriteria.repositoryId': search_criteria_repository_id, 'searchCriteria.reviewerId': search_criteria_reviewer_id, 'searchCriteria.sourceRefName': search_criteria_source_ref_name, 'searchCriteria.sourceRepositoryId': search_criteria_source_repository_id, 'searchCriteria.status': search_criteria_status, 'searchCriteria.targetRefName': search_criteria_target_ref_name, 'maxCommentLength': max_comment_length, '$skip': skip, '$top': top}, content_type=None, accept=accept, response_type=list[models.GitPullRequest], binary=False, service='git', operation='pull_requests_get_pull_requests_by_project', route_template='/{project}/_apis/git/pullrequests')
-    def pull_requests_get_pull_request_by_id(self, *, pull_request_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitPullRequest]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/pullrequests',
+            path_params={
+                'project': project,
+            },
+            query={
+                'searchCriteria.creatorId': search_criteria_creator_id,
+                'searchCriteria.includeLinks': search_criteria_include_links,
+                'searchCriteria.repositoryId': search_criteria_repository_id,
+                'searchCriteria.reviewerId': search_criteria_reviewer_id,
+                'searchCriteria.sourceRefName': search_criteria_source_ref_name,
+                'searchCriteria.sourceRepositoryId': search_criteria_source_repository_id,
+                'searchCriteria.status': search_criteria_status,
+                'searchCriteria.targetRefName': search_criteria_target_ref_name,
+                'maxCommentLength': max_comment_length,
+                '$skip': skip,
+                '$top': top,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitPullRequest],
+            binary=False,
+            service='git',
+            operation='pull_requests_get_pull_requests_by_project',
+            route_template='/{project}/_apis/git/pullrequests',
+        )
+
+    def pull_requests_get_pull_request_by_id(
+        self,
+        *,
+        pull_request_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequest]:
         "Pull Requests_Get Pull Request By Id. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/pullrequests/{pullRequestId}', path_params={'project': project, 'pullRequestId': pull_request_id}, content_type=None, accept=accept, response_type=models.GitPullRequest, binary=False, service='git', operation='pull_requests_get_pull_request_by_id', route_template='/{project}/_apis/git/pullrequests/{pullRequestId}')
-    def repositories_get_recycle_bin_repositories(self, *, project: str, accept: str = 'application/json') -> ApiResponse[list[models.GitDeletedRepository]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/pullrequests/{pullRequestId}',
+            path_params={
+                'project': project,
+                'pullRequestId': pull_request_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitPullRequest,
+            binary=False,
+            service='git',
+            operation='pull_requests_get_pull_request_by_id',
+            route_template='/{project}/_apis/git/pullrequests/{pullRequestId}',
+        )
+
+    def repositories_get_recycle_bin_repositories(
+        self,
+        *,
+        project: str,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitDeletedRepository]]:
         "Repositories_Get Recycle Bin Repositories. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/recycleBin/repositories', path_params={'project': project}, content_type=None, accept=accept, response_type=list[models.GitDeletedRepository], binary=False, service='git', operation='repositories_get_recycle_bin_repositories', route_template='/{project}/_apis/git/recycleBin/repositories')
-    def repositories_delete_repository_from_recycle_bin(self, *, project: str, repository_id: str | UUID, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/recycleBin/repositories',
+            path_params={
+                'project': project,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitDeletedRepository],
+            binary=False,
+            service='git',
+            operation='repositories_get_recycle_bin_repositories',
+            route_template='/{project}/_apis/git/recycleBin/repositories',
+        )
+
+    def repositories_delete_repository_from_recycle_bin(
+        self,
+        *,
+        project: str,
+        repository_id: str | UUID,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Repositories_Delete Repository From Recycle Bin. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/recycleBin/repositories/{repositoryId}', path_params={'project': project, 'repositoryId': repository_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='repositories_delete_repository_from_recycle_bin', route_template='/{project}/_apis/git/recycleBin/repositories/{repositoryId}')
-    def repositories_restore_repository_from_recycle_bin(self, *, project: str, repository_id: str | UUID, body: models.GitRecycleBinRepositoryDetails, accept: str = 'application/json') -> ApiResponse[models.GitRepository]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/recycleBin/repositories/{repositoryId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='repositories_delete_repository_from_recycle_bin',
+            route_template='/{project}/_apis/git/recycleBin/repositories/{repositoryId}',
+        )
+
+    def repositories_restore_repository_from_recycle_bin(
+        self,
+        *,
+        project: str,
+        repository_id: str | UUID,
+        body: models.GitRecycleBinRepositoryDetails,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRepository]:
         "Repositories_Restore Repository From Recycle Bin. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/recycleBin/repositories/{repositoryId}', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitRepository, binary=False, service='git', operation='repositories_restore_repository_from_recycle_bin', route_template='/{project}/_apis/git/recycleBin/repositories/{repositoryId}')
-    def repositories_create(self, *, project: str | None = None, source_ref: str | None = None, body: models.GitRepositoryCreateOptions, accept: str = 'application/json') -> ApiResponse[models.GitRepository]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/recycleBin/repositories/{repositoryId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitRepository,
+            binary=False,
+            service='git',
+            operation='repositories_restore_repository_from_recycle_bin',
+            route_template='/{project}/_apis/git/recycleBin/repositories/{repositoryId}',
+        )
+
+    def repositories_create(
+        self,
+        *,
+        project: str | None = None,
+        source_ref: str | None = None,
+        body: models.GitRepositoryCreateOptions,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRepository]:
         "Repositories_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories', path_params={'project': project}, query={'sourceRef': source_ref}, body=body, content_type='application/json', accept=accept, response_type=models.GitRepository, binary=False, service='git', operation='repositories_create', route_template='/{project}/_apis/git/repositories')
-    def repositories_list(self, *, project: str | None = None, include_links: bool | None = None, include_all_urls: bool | None = None, include_hidden: bool | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitRepository]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories',
+            path_params={
+                'project': project,
+            },
+            query={
+                'sourceRef': source_ref,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitRepository,
+            binary=False,
+            service='git',
+            operation='repositories_create',
+            route_template='/{project}/_apis/git/repositories',
+        )
+
+    def repositories_list(
+        self,
+        *,
+        project: str | None = None,
+        include_links: bool | None = None,
+        include_all_urls: bool | None = None,
+        include_hidden: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitRepository]]:
         "Repositories_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories', path_params={'project': project}, query={'includeLinks': include_links, 'includeAllUrls': include_all_urls, 'includeHidden': include_hidden}, content_type=None, accept=accept, response_type=list[models.GitRepository], binary=False, service='git', operation='repositories_list', route_template='/{project}/_apis/git/repositories')
-    def repositories_delete(self, *, repository_id: str | UUID, project: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories',
+            path_params={
+                'project': project,
+            },
+            query={
+                'includeLinks': include_links,
+                'includeAllUrls': include_all_urls,
+                'includeHidden': include_hidden,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitRepository],
+            binary=False,
+            service='git',
+            operation='repositories_list',
+            route_template='/{project}/_apis/git/repositories',
+        )
+
+    def repositories_delete(
+        self,
+        *,
+        repository_id: str | UUID,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Repositories_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/repositories/{repositoryId}', path_params={'project': project, 'repositoryId': repository_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='repositories_delete', route_template='/{project}/_apis/git/repositories/{repositoryId}')
-    def repositories_get_repository(self, *, repository_id: str, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitRepository]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/repositories/{repositoryId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='repositories_delete',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}',
+        )
+
+    def repositories_get_repository(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRepository]:
         "Repositories_Get Repository. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}', path_params={'project': project, 'repositoryId': repository_id}, content_type=None, accept=accept, response_type=models.GitRepository, binary=False, service='git', operation='repositories_get_repository', route_template='/{project}/_apis/git/repositories/{repositoryId}')
-    def repositories_update(self, *, repository_id: str | UUID, project: str | None = None, body: models.GitRepository, accept: str = 'application/json') -> ApiResponse[models.GitRepository]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitRepository,
+            binary=False,
+            service='git',
+            operation='repositories_get_repository',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}',
+        )
+
+    def repositories_update(
+        self,
+        *,
+        repository_id: str | UUID,
+        project: str | None = None,
+        body: models.GitRepository,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRepository]:
         "Repositories_Update. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitRepository, binary=False, service='git', operation='repositories_update', route_template='/{project}/_apis/git/repositories/{repositoryId}')
-    def annotated_tags_create(self, *, project: str, repository_id: str, body: models.GitAnnotatedTag, accept: str = 'application/json') -> ApiResponse[models.GitAnnotatedTag]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitRepository,
+            binary=False,
+            service='git',
+            operation='repositories_update',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}',
+        )
+
+    def annotated_tags_create(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        body: models.GitAnnotatedTag,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitAnnotatedTag]:
         "Annotated Tags_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/annotatedtags', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitAnnotatedTag, binary=False, service='git', operation='annotated_tags_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/annotatedtags')
-    def annotated_tags_get(self, *, project: str, repository_id: str, object_id: str, accept: str = 'application/json') -> ApiResponse[models.GitAnnotatedTag]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/annotatedtags',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitAnnotatedTag,
+            binary=False,
+            service='git',
+            operation='annotated_tags_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/annotatedtags',
+        )
+
+    def annotated_tags_get(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        object_id: str,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitAnnotatedTag]:
         "Annotated Tags_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/annotatedtags/{objectId}', path_params={'project': project, 'repositoryId': repository_id, 'objectId': object_id}, content_type=None, accept=accept, response_type=models.GitAnnotatedTag, binary=False, service='git', operation='annotated_tags_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/annotatedtags/{objectId}')
-    def blobs_get_blobs_zip(self, *, repository_id: str, project: str | None = None, filename: str | None = None, body: list[str], accept: str = 'application/zip') -> ApiResponse[bytes]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/annotatedtags/{objectId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'objectId': object_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitAnnotatedTag,
+            binary=False,
+            service='git',
+            operation='annotated_tags_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/annotatedtags/{objectId}',
+        )
+
+    def blobs_get_blobs_zip(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        filename: str | None = None,
+        body: list[str],
+        accept: str = 'application/zip',
+    ) -> ApiResponse[bytes]:
         "Blobs_Get Blobs Zip. Use accept='application/zip' for the default binary representation; pass another accepted media type for alternate representations."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/blobs', path_params={'project': project, 'repositoryId': repository_id}, query={'filename': filename}, body=body, content_type='application/json', accept=accept, response_type=bytes, binary=True, service='git', operation='blobs_get_blobs_zip', route_template='/{project}/_apis/git/repositories/{repositoryId}/blobs')
-    def blobs_get_blob(self, *, repository_id: str, sha1: str, project: str | None = None, download: bool | None = None, file_name: str | None = None, format: str | None = None, resolve_lfs: bool | None = None, accept: str = 'application/json') -> ApiResponse[models.GitBlobRef | bytes]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/blobs',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'filename': filename,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=bytes,
+            binary=True,
+            service='git',
+            operation='blobs_get_blobs_zip',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/blobs',
+        )
+
+    def blobs_get_blob(
+        self,
+        *,
+        repository_id: str,
+        sha1: str,
+        project: str | None = None,
+        download: bool | None = None,
+        file_name: str | None = None,
+        format: str | None = None,
+        resolve_lfs: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitBlobRef | bytes]:
         "Blobs_Get Blob. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/blobs/{sha1}', path_params={'project': project, 'repositoryId': repository_id, 'sha1': sha1}, query={'download': download, 'fileName': file_name, '$format': format, 'resolveLfs': resolve_lfs}, content_type=None, accept=accept, response_type=models.GitBlobRef | bytes, binary=False, service='git', operation='blobs_get_blob', route_template='/{project}/_apis/git/repositories/{repositoryId}/blobs/{sha1}')
-    def cherry_picks_create(self, *, project: str, repository_id: str, body: models.GitAsyncRefOperationParameters, accept: str = 'application/json') -> ApiResponse[models.GitCherryPick]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/blobs/{sha1}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'sha1': sha1,
+            },
+            query={
+                'download': download,
+                'fileName': file_name,
+                '$format': format,
+                'resolveLfs': resolve_lfs,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitBlobRef | bytes,
+            binary=False,
+            service='git',
+            operation='blobs_get_blob',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/blobs/{sha1}',
+        )
+
+    def cherry_picks_create(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        body: models.GitAsyncRefOperationParameters,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitCherryPick]:
         "Cherry Picks_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/cherryPicks', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitCherryPick, binary=False, service='git', operation='cherry_picks_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/cherryPicks')
-    def cherry_picks_get_cherry_pick_for_ref_name(self, *, project: str, repository_id: str, ref_name: str, accept: str = 'application/json') -> ApiResponse[models.GitCherryPick]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/cherryPicks',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitCherryPick,
+            binary=False,
+            service='git',
+            operation='cherry_picks_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/cherryPicks',
+        )
+
+    def cherry_picks_get_cherry_pick_for_ref_name(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        ref_name: str,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitCherryPick]:
         "Cherry Picks_Get Cherry Pick For Ref Name. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/cherryPicks', path_params={'project': project, 'repositoryId': repository_id}, query={'refName': ref_name}, content_type=None, accept=accept, response_type=models.GitCherryPick, binary=False, service='git', operation='cherry_picks_get_cherry_pick_for_ref_name', route_template='/{project}/_apis/git/repositories/{repositoryId}/cherryPicks')
-    def cherry_picks_get_cherry_pick(self, *, project: str, cherry_pick_id: int, repository_id: str, accept: str = 'application/json') -> ApiResponse[models.GitCherryPick]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/cherryPicks',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'refName': ref_name,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitCherryPick,
+            binary=False,
+            service='git',
+            operation='cherry_picks_get_cherry_pick_for_ref_name',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/cherryPicks',
+        )
+
+    def cherry_picks_get_cherry_pick(
+        self,
+        *,
+        project: str,
+        cherry_pick_id: int,
+        repository_id: str,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitCherryPick]:
         "Cherry Picks_Get Cherry Pick. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/cherryPicks/{cherryPickId}', path_params={'project': project, 'repositoryId': repository_id, 'cherryPickId': cherry_pick_id}, content_type=None, accept=accept, response_type=models.GitCherryPick, binary=False, service='git', operation='cherry_picks_get_cherry_pick', route_template='/{project}/_apis/git/repositories/{repositoryId}/cherryPicks/{cherryPickId}')
-    def commits_get_push_commits(self, *, repository_id: str, push_id: int, project: str | None = None, top: int | None = None, skip: int | None = None, include_links: bool | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitCommitRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/cherryPicks/{cherryPickId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'cherryPickId': cherry_pick_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitCherryPick,
+            binary=False,
+            service='git',
+            operation='cherry_picks_get_cherry_pick',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/cherryPicks/{cherryPickId}',
+        )
+
+    def commits_get_push_commits(
+        self,
+        *,
+        repository_id: str,
+        push_id: int,
+        project: str | None = None,
+        top: int | None = None,
+        skip: int | None = None,
+        include_links: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitCommitRef]]:
         "Commits_Get Push Commits. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/commits', path_params={'project': project, 'repositoryId': repository_id}, query={'pushId': push_id, 'top': top, 'skip': skip, 'includeLinks': include_links}, content_type=None, accept=accept, response_type=list[models.GitCommitRef], binary=False, service='git', operation='commits_get_push_commits', route_template='/{project}/_apis/git/repositories/{repositoryId}/commits')
-    def commits_get(self, *, commit_id: str, repository_id: str, project: str | None = None, change_count: int | None = None, accept: str = 'application/json') -> ApiResponse[models.GitCommit]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/commits',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'pushId': push_id,
+                'top': top,
+                'skip': skip,
+                'includeLinks': include_links,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitCommitRef],
+            binary=False,
+            service='git',
+            operation='commits_get_push_commits',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/commits',
+        )
+
+    def commits_get(
+        self,
+        *,
+        commit_id: str,
+        repository_id: str,
+        project: str | None = None,
+        change_count: int | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitCommit]:
         "Commits_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}', path_params={'project': project, 'repositoryId': repository_id, 'commitId': commit_id}, query={'changeCount': change_count}, content_type=None, accept=accept, response_type=models.GitCommit, binary=False, service='git', operation='commits_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}')
-    def commits_get_changes(self, *, commit_id: str, repository_id: str, project: str | None = None, top: int | None = None, skip: int | None = None, accept: str = 'application/json') -> ApiResponse[models.GitCommitChanges]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'commitId': commit_id,
+            },
+            query={
+                'changeCount': change_count,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitCommit,
+            binary=False,
+            service='git',
+            operation='commits_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}',
+        )
+
+    def commits_get_changes(
+        self,
+        *,
+        commit_id: str,
+        repository_id: str,
+        project: str | None = None,
+        top: int | None = None,
+        skip: int | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitCommitChanges]:
         "Commits_Get Changes. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/changes', path_params={'project': project, 'repositoryId': repository_id, 'commitId': commit_id}, query={'top': top, 'skip': skip}, content_type=None, accept=accept, response_type=models.GitCommitChanges, binary=False, service='git', operation='commits_get_changes', route_template='/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/changes')
-    def statuses_create(self, *, commit_id: str, repository_id: str, project: str | None = None, body: models.GitStatus, accept: str = 'application/json') -> ApiResponse[models.GitStatus]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/changes',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'commitId': commit_id,
+            },
+            query={
+                'top': top,
+                'skip': skip,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitCommitChanges,
+            binary=False,
+            service='git',
+            operation='commits_get_changes',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/changes',
+        )
+
+    def statuses_create(
+        self,
+        *,
+        commit_id: str,
+        repository_id: str,
+        project: str | None = None,
+        body: models.GitStatus,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitStatus]:
         "Statuses_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/statuses', path_params={'project': project, 'repositoryId': repository_id, 'commitId': commit_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitStatus, binary=False, service='git', operation='statuses_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/statuses')
-    def statuses_list(self, *, commit_id: str, repository_id: str, project: str | None = None, top: int | None = None, skip: int | None = None, latest_only: bool | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitStatus]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/statuses',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'commitId': commit_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitStatus,
+            binary=False,
+            service='git',
+            operation='statuses_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/statuses',
+        )
+
+    def statuses_list(
+        self,
+        *,
+        commit_id: str,
+        repository_id: str,
+        project: str | None = None,
+        top: int | None = None,
+        skip: int | None = None,
+        latest_only: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitStatus]]:
         "Statuses_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/statuses', path_params={'project': project, 'repositoryId': repository_id, 'commitId': commit_id}, query={'top': top, 'skip': skip, 'latestOnly': latest_only}, content_type=None, accept=accept, response_type=list[models.GitStatus], binary=False, service='git', operation='statuses_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/statuses')
-    def commits_get_commits_batch(self, *, repository_id: str, project: str | None = None, skip: int | None = None, top: int | None = None, include_statuses: bool | None = None, body: models.GitQueryCommitsCriteria, accept: str = 'application/json') -> ApiResponse[list[models.GitCommitRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/statuses',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'commitId': commit_id,
+            },
+            query={
+                'top': top,
+                'skip': skip,
+                'latestOnly': latest_only,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitStatus],
+            binary=False,
+            service='git',
+            operation='statuses_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/commits/{commitId}/statuses',
+        )
+
+    def commits_get_commits_batch(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        skip: int | None = None,
+        top: int | None = None,
+        include_statuses: bool | None = None,
+        body: models.GitQueryCommitsCriteria,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitCommitRef]]:
         "Commits_Get Commits Batch. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/commitsbatch', path_params={'project': project, 'repositoryId': repository_id}, query={'$skip': skip, '$top': top, 'includeStatuses': include_statuses}, body=body, content_type='application/json', accept=accept, response_type=list[models.GitCommitRef], binary=False, service='git', operation='commits_get_commits_batch', route_template='/{project}/_apis/git/repositories/{repositoryId}/commitsbatch')
-    def diffs_get(self, *, repository_id: str, project: str | None = None, diff_common_commit: bool | None = None, top: int | None = None, skip: int | None = None, base_version: str | None = None, base_version_options: str | None = None, base_version_type: str | None = None, target_version: str | None = None, target_version_options: str | None = None, target_version_type: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitCommitDiffs]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/commitsbatch',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                '$skip': skip,
+                '$top': top,
+                'includeStatuses': include_statuses,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=list[models.GitCommitRef],
+            binary=False,
+            service='git',
+            operation='commits_get_commits_batch',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/commitsbatch',
+        )
+
+    def diffs_get(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        diff_common_commit: bool | None = None,
+        top: int | None = None,
+        skip: int | None = None,
+        base_version: str | None = None,
+        base_version_options: str | None = None,
+        base_version_type: str | None = None,
+        target_version: str | None = None,
+        target_version_options: str | None = None,
+        target_version_type: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitCommitDiffs]:
         "Diffs_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/diffs/commits', path_params={'project': project, 'repositoryId': repository_id}, query={'diffCommonCommit': diff_common_commit, '$top': top, '$skip': skip, 'baseVersion': base_version, 'baseVersionOptions': base_version_options, 'baseVersionType': base_version_type, 'targetVersion': target_version, 'targetVersionOptions': target_version_options, 'targetVersionType': target_version_type}, content_type=None, accept=accept, response_type=models.GitCommitDiffs, binary=False, service='git', operation='diffs_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/diffs/commits')
-    def import_requests_create(self, *, project: str, repository_id: str, body: models.GitImportRequest, accept: str = 'application/json') -> ApiResponse[models.GitImportRequest]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/diffs/commits',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'diffCommonCommit': diff_common_commit,
+                '$top': top,
+                '$skip': skip,
+                'baseVersion': base_version,
+                'baseVersionOptions': base_version_options,
+                'baseVersionType': base_version_type,
+                'targetVersion': target_version,
+                'targetVersionOptions': target_version_options,
+                'targetVersionType': target_version_type,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitCommitDiffs,
+            binary=False,
+            service='git',
+            operation='diffs_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/diffs/commits',
+        )
+
+    def import_requests_create(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        body: models.GitImportRequest,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitImportRequest]:
         "Import Requests_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/importRequests', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitImportRequest, binary=False, service='git', operation='import_requests_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/importRequests')
-    def import_requests_query(self, *, project: str, repository_id: str, include_abandoned: bool | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitImportRequest]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/importRequests',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitImportRequest,
+            binary=False,
+            service='git',
+            operation='import_requests_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/importRequests',
+        )
+
+    def import_requests_query(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        include_abandoned: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitImportRequest]]:
         "Import Requests_Query. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/importRequests', path_params={'project': project, 'repositoryId': repository_id}, query={'includeAbandoned': include_abandoned}, content_type=None, accept=accept, response_type=list[models.GitImportRequest], binary=False, service='git', operation='import_requests_query', route_template='/{project}/_apis/git/repositories/{repositoryId}/importRequests')
-    def import_requests_get(self, *, project: str, repository_id: str, import_request_id: int, accept: str = 'application/json') -> ApiResponse[models.GitImportRequest]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/importRequests',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'includeAbandoned': include_abandoned,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitImportRequest],
+            binary=False,
+            service='git',
+            operation='import_requests_query',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/importRequests',
+        )
+
+    def import_requests_get(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        import_request_id: int,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitImportRequest]:
         "Import Requests_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/importRequests/{importRequestId}', path_params={'project': project, 'repositoryId': repository_id, 'importRequestId': import_request_id}, content_type=None, accept=accept, response_type=models.GitImportRequest, binary=False, service='git', operation='import_requests_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/importRequests/{importRequestId}')
-    def import_requests_update(self, *, project: str, repository_id: str, import_request_id: int, body: models.GitImportRequest, accept: str = 'application/json') -> ApiResponse[models.GitImportRequest]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/importRequests/{importRequestId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'importRequestId': import_request_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitImportRequest,
+            binary=False,
+            service='git',
+            operation='import_requests_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/importRequests/{importRequestId}',
+        )
+
+    def import_requests_update(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        import_request_id: int,
+        body: models.GitImportRequest,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitImportRequest]:
         "Import Requests_Update. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/importRequests/{importRequestId}', path_params={'project': project, 'repositoryId': repository_id, 'importRequestId': import_request_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitImportRequest, binary=False, service='git', operation='import_requests_update', route_template='/{project}/_apis/git/repositories/{repositoryId}/importRequests/{importRequestId}')
-    def items_list(self, *, repository_id: str, project: str | None = None, scope_path: str | None = None, recursion_level: str | None = None, include_content_metadata: bool | None = None, latest_processed_change: bool | None = None, download: bool | None = None, include_links: bool | None = None, format: str | None = None, version_descriptor_version: str | None = None, version_descriptor_version_options: str | None = None, version_descriptor_version_type: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitItem]]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/importRequests/{importRequestId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'importRequestId': import_request_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitImportRequest,
+            binary=False,
+            service='git',
+            operation='import_requests_update',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/importRequests/{importRequestId}',
+        )
+
+    def items_list(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        scope_path: str | None = None,
+        recursion_level: str | None = None,
+        include_content_metadata: bool | None = None,
+        latest_processed_change: bool | None = None,
+        download: bool | None = None,
+        include_links: bool | None = None,
+        format: str | None = None,
+        version_descriptor_version: str | None = None,
+        version_descriptor_version_options: str | None = None,
+        version_descriptor_version_type: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitItem]]:
         "Items_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/items', path_params={'project': project, 'repositoryId': repository_id}, query={'scopePath': scope_path, 'recursionLevel': recursion_level, 'includeContentMetadata': include_content_metadata, 'latestProcessedChange': latest_processed_change, 'download': download, 'includeLinks': include_links, '$format': format, 'versionDescriptor.version': version_descriptor_version, 'versionDescriptor.versionOptions': version_descriptor_version_options, 'versionDescriptor.versionType': version_descriptor_version_type}, content_type=None, accept=accept, response_type=list[models.GitItem], binary=False, service='git', operation='items_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/items')
-    def items_get_items_batch(self, *, repository_id: str, project: str | None = None, body: models.GitItemRequestData, accept: str = 'application/json') -> ApiResponse[list[list[Any]]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/items',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'scopePath': scope_path,
+                'recursionLevel': recursion_level,
+                'includeContentMetadata': include_content_metadata,
+                'latestProcessedChange': latest_processed_change,
+                'download': download,
+                'includeLinks': include_links,
+                '$format': format,
+                'versionDescriptor.version': version_descriptor_version,
+                'versionDescriptor.versionOptions': version_descriptor_version_options,
+                'versionDescriptor.versionType': version_descriptor_version_type,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitItem],
+            binary=False,
+            service='git',
+            operation='items_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/items',
+        )
+
+    def items_get_items_batch(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        body: models.GitItemRequestData,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[list[Any]]]:
         "Items_Get Items Batch. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/itemsbatch', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=list[list[Any]], binary=False, service='git', operation='items_get_items_batch', route_template='/{project}/_apis/git/repositories/{repositoryId}/itemsbatch')
-    def pull_request_query_get(self, *, repository_id: str, project: str | None = None, body: models.GitPullRequestQuery, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestQuery]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/itemsbatch',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=list[list[Any]],
+            binary=False,
+            service='git',
+            operation='items_get_items_batch',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/itemsbatch',
+        )
+
+    def pull_request_query_get(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        body: models.GitPullRequestQuery,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestQuery]:
         "Pull Request Query_Get. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullrequestquery', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitPullRequestQuery, binary=False, service='git', operation='pull_request_query_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequestquery')
-    def pull_requests_create(self, *, repository_id: str, project: str | None = None, supports_iterations: bool | None = None, body: models.GitPullRequest, accept: str = 'application/json') -> ApiResponse[models.GitPullRequest]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullrequestquery',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitPullRequestQuery,
+            binary=False,
+            service='git',
+            operation='pull_request_query_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequestquery',
+        )
+
+    def pull_requests_create(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        supports_iterations: bool | None = None,
+        body: models.GitPullRequest,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequest]:
         "Pull Requests_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullrequests', path_params={'project': project, 'repositoryId': repository_id}, query={'supportsIterations': supports_iterations}, body=body, content_type='application/json', accept=accept, response_type=models.GitPullRequest, binary=False, service='git', operation='pull_requests_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequests')
-    def pull_requests_get_pull_requests(self, *, repository_id: str, project: str | None = None, search_criteria_creator_id: str | UUID | None = None, search_criteria_include_links: bool | None = None, search_criteria_repository_id: str | UUID | None = None, search_criteria_reviewer_id: str | UUID | None = None, search_criteria_source_ref_name: str | None = None, search_criteria_source_repository_id: str | UUID | None = None, search_criteria_status: str | None = None, search_criteria_target_ref_name: str | None = None, max_comment_length: int | None = None, skip: int | None = None, top: int | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitPullRequest]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullrequests',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'supportsIterations': supports_iterations,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitPullRequest,
+            binary=False,
+            service='git',
+            operation='pull_requests_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequests',
+        )
+
+    def pull_requests_get_pull_requests(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        search_criteria_creator_id: str | UUID | None = None,
+        search_criteria_include_links: bool | None = None,
+        search_criteria_repository_id: str | UUID | None = None,
+        search_criteria_reviewer_id: str | UUID | None = None,
+        search_criteria_source_ref_name: str | None = None,
+        search_criteria_source_repository_id: str | UUID | None = None,
+        search_criteria_status: str | None = None,
+        search_criteria_target_ref_name: str | None = None,
+        max_comment_length: int | None = None,
+        skip: int | None = None,
+        top: int | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitPullRequest]]:
         "Pull Requests_Get Pull Requests. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullrequests', path_params={'project': project, 'repositoryId': repository_id}, query={'searchCriteria.creatorId': search_criteria_creator_id, 'searchCriteria.includeLinks': search_criteria_include_links, 'searchCriteria.repositoryId': search_criteria_repository_id, 'searchCriteria.reviewerId': search_criteria_reviewer_id, 'searchCriteria.sourceRefName': search_criteria_source_ref_name, 'searchCriteria.sourceRepositoryId': search_criteria_source_repository_id, 'searchCriteria.status': search_criteria_status, 'searchCriteria.targetRefName': search_criteria_target_ref_name, 'maxCommentLength': max_comment_length, '$skip': skip, '$top': top}, content_type=None, accept=accept, response_type=list[models.GitPullRequest], binary=False, service='git', operation='pull_requests_get_pull_requests', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequests')
-    def pull_requests_get_pull_request(self, *, repository_id: str, pull_request_id: int, project: str | None = None, max_comment_length: int | None = None, skip: int | None = None, top: int | None = None, include_commits: bool | None = None, include_work_item_refs: bool | None = None, accept: str = 'application/json') -> ApiResponse[models.GitPullRequest]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullrequests',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'searchCriteria.creatorId': search_criteria_creator_id,
+                'searchCriteria.includeLinks': search_criteria_include_links,
+                'searchCriteria.repositoryId': search_criteria_repository_id,
+                'searchCriteria.reviewerId': search_criteria_reviewer_id,
+                'searchCriteria.sourceRefName': search_criteria_source_ref_name,
+                'searchCriteria.sourceRepositoryId': search_criteria_source_repository_id,
+                'searchCriteria.status': search_criteria_status,
+                'searchCriteria.targetRefName': search_criteria_target_ref_name,
+                'maxCommentLength': max_comment_length,
+                '$skip': skip,
+                '$top': top,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitPullRequest],
+            binary=False,
+            service='git',
+            operation='pull_requests_get_pull_requests',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequests',
+        )
+
+    def pull_requests_get_pull_request(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        max_comment_length: int | None = None,
+        skip: int | None = None,
+        top: int | None = None,
+        include_commits: bool | None = None,
+        include_work_item_refs: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequest]:
         "Pull Requests_Get Pull Request. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullrequests/{pullRequestId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, query={'maxCommentLength': max_comment_length, '$skip': skip, '$top': top, 'includeCommits': include_commits, 'includeWorkItemRefs': include_work_item_refs}, content_type=None, accept=accept, response_type=models.GitPullRequest, binary=False, service='git', operation='pull_requests_get_pull_request', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequests/{pullRequestId}')
-    def pull_requests_update(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: models.GitPullRequest, accept: str = 'application/json') -> ApiResponse[models.GitPullRequest]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullrequests/{pullRequestId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            query={
+                'maxCommentLength': max_comment_length,
+                '$skip': skip,
+                '$top': top,
+                'includeCommits': include_commits,
+                'includeWorkItemRefs': include_work_item_refs,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitPullRequest,
+            binary=False,
+            service='git',
+            operation='pull_requests_get_pull_request',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequests/{pullRequestId}',
+        )
+
+    def pull_requests_update(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: models.GitPullRequest,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequest]:
         "Pull Requests_Update. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/pullrequests/{pullRequestId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitPullRequest, binary=False, service='git', operation='pull_requests_update', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequests/{pullRequestId}')
-    def pull_request_attachments_list(self, *, repository_id: str, pull_request_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.Attachment]]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullrequests/{pullRequestId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitPullRequest,
+            binary=False,
+            service='git',
+            operation='pull_requests_update',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullrequests/{pullRequestId}',
+        )
+
+    def pull_request_attachments_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.Attachment]]:
         "Pull Request Attachments_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, content_type=None, accept=accept, response_type=list[models.Attachment], binary=False, service='git', operation='pull_request_attachments_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments')
-    def pull_request_attachments_create(self, *, file_name: str, repository_id: str, pull_request_id: int, project: str | None = None, body: bytes, accept: str = 'application/json') -> ApiResponse[models.Attachment]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.Attachment],
+            binary=False,
+            service='git',
+            operation='pull_request_attachments_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments',
+        )
+
+    def pull_request_attachments_create(
+        self,
+        *,
+        file_name: str,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: bytes,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.Attachment]:
         "Pull Request Attachments_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'fileName': file_name}, body=body, content_type='application/octet-stream', accept=accept, response_type=models.Attachment, binary=False, service='git', operation='pull_request_attachments_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}')
-    def pull_request_attachments_delete(self, *, file_name: str, repository_id: str, pull_request_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'fileName': file_name,
+            },
+            body=body,
+            content_type='application/octet-stream',
+            accept=accept,
+            response_type=models.Attachment,
+            binary=False,
+            service='git',
+            operation='pull_request_attachments_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}',
+        )
+
+    def pull_request_attachments_delete(
+        self,
+        *,
+        file_name: str,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Attachments_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'fileName': file_name}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_attachments_delete', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}')
-    def pull_request_attachments_get(self, *, file_name: str, repository_id: str, pull_request_id: int, project: str | None = None, accept: str = 'application/octet-stream') -> ApiResponse[bytes]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'fileName': file_name,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_attachments_delete',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}',
+        )
+
+    def pull_request_attachments_get(
+        self,
+        *,
+        file_name: str,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        accept: str = 'application/octet-stream',
+    ) -> ApiResponse[bytes]:
         "Pull Request Attachments_Get. Use accept='application/octet-stream' for the default binary representation; pass another accepted media type for alternate representations."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'fileName': file_name}, content_type=None, accept=accept, response_type=bytes, binary=True, service='git', operation='pull_request_attachments_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}')
-    def pull_request_commits_get_pull_request_commits(self, *, repository_id: str, pull_request_id: int, project: str | None = None, top: int | None = None, continuation_token: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitCommitRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'fileName': file_name,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=bytes,
+            binary=True,
+            service='git',
+            operation='pull_request_attachments_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/attachments/{fileName}',
+        )
+
+    def pull_request_commits_get_pull_request_commits(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        top: int | None = None,
+        continuation_token: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitCommitRef]]:
         "Pull Request Commits_Get Pull Request Commits. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/commits', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, query={'$top': top, 'continuationToken': continuation_token}, content_type=None, accept=accept, response_type=list[models.GitCommitRef], binary=False, service='git', operation='pull_request_commits_get_pull_request_commits', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/commits')
-    def pull_request_iterations_list(self, *, repository_id: str, pull_request_id: int, project: str | None = None, include_commits: bool | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitPullRequestIteration]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/commits',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            query={
+                '$top': top,
+                'continuationToken': continuation_token,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitCommitRef],
+            binary=False,
+            service='git',
+            operation='pull_request_commits_get_pull_request_commits',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/commits',
+        )
+
+    def pull_request_iterations_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        include_commits: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitPullRequestIteration]]:
         "Pull Request Iterations_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, query={'includeCommits': include_commits}, content_type=None, accept=accept, response_type=list[models.GitPullRequestIteration], binary=False, service='git', operation='pull_request_iterations_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations')
-    def pull_request_iterations_get(self, *, repository_id: str, pull_request_id: int, iteration_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestIteration]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            query={
+                'includeCommits': include_commits,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitPullRequestIteration],
+            binary=False,
+            service='git',
+            operation='pull_request_iterations_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations',
+        )
+
+    def pull_request_iterations_get(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        iteration_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestIteration]:
         "Pull Request Iterations_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'iterationId': iteration_id}, content_type=None, accept=accept, response_type=models.GitPullRequestIteration, binary=False, service='git', operation='pull_request_iterations_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}')
-    def pull_request_iteration_changes_get(self, *, repository_id: str, pull_request_id: int, iteration_id: int, project: str | None = None, top: int | None = None, skip: int | None = None, compare_to: int | None = None, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestIterationChanges]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'iterationId': iteration_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitPullRequestIteration,
+            binary=False,
+            service='git',
+            operation='pull_request_iterations_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}',
+        )
+
+    def pull_request_iteration_changes_get(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        iteration_id: int,
+        project: str | None = None,
+        top: int | None = None,
+        skip: int | None = None,
+        compare_to: int | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestIterationChanges]:
         "Pull Request Iteration Changes_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/changes', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'iterationId': iteration_id}, query={'$top': top, '$skip': skip, '$compareTo': compare_to}, content_type=None, accept=accept, response_type=models.GitPullRequestIterationChanges, binary=False, service='git', operation='pull_request_iteration_changes_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/changes')
-    def pull_request_commits_get_pull_request_iteration_commits(self, *, repository_id: str, pull_request_id: int, iteration_id: int, project: str | None = None, top: int | None = None, skip: int | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitCommitRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/changes',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'iterationId': iteration_id,
+            },
+            query={
+                '$top': top,
+                '$skip': skip,
+                '$compareTo': compare_to,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitPullRequestIterationChanges,
+            binary=False,
+            service='git',
+            operation='pull_request_iteration_changes_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/changes',
+        )
+
+    def pull_request_commits_get_pull_request_iteration_commits(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        iteration_id: int,
+        project: str | None = None,
+        top: int | None = None,
+        skip: int | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitCommitRef]]:
         "Pull Request Commits_Get Pull Request Iteration Commits. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/commits', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'iterationId': iteration_id}, query={'top': top, 'skip': skip}, content_type=None, accept=accept, response_type=list[models.GitCommitRef], binary=False, service='git', operation='pull_request_commits_get_pull_request_iteration_commits', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/commits')
-    def pull_request_iteration_statuses_create(self, *, repository_id: str, pull_request_id: int, iteration_id: int, project: str | None = None, body: models.GitPullRequestStatus, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestStatus]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/commits',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'iterationId': iteration_id,
+            },
+            query={
+                'top': top,
+                'skip': skip,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitCommitRef],
+            binary=False,
+            service='git',
+            operation='pull_request_commits_get_pull_request_iteration_commits',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/commits',
+        )
+
+    def pull_request_iteration_statuses_create(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        iteration_id: int,
+        project: str | None = None,
+        body: models.GitPullRequestStatus,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestStatus]:
         "Pull Request Iteration Statuses_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'iterationId': iteration_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitPullRequestStatus, binary=False, service='git', operation='pull_request_iteration_statuses_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses')
-    def pull_request_iteration_statuses_list(self, *, repository_id: str, pull_request_id: int, iteration_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitPullRequestStatus]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'iterationId': iteration_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitPullRequestStatus,
+            binary=False,
+            service='git',
+            operation='pull_request_iteration_statuses_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses',
+        )
+
+    def pull_request_iteration_statuses_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        iteration_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitPullRequestStatus]]:
         "Pull Request Iteration Statuses_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'iterationId': iteration_id}, content_type=None, accept=accept, response_type=list[models.GitPullRequestStatus], binary=False, service='git', operation='pull_request_iteration_statuses_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses')
-    def pull_request_iteration_statuses_update(self, *, repository_id: str, pull_request_id: int, iteration_id: int, project: str | None = None, body: models.JsonPatchDocument, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'iterationId': iteration_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitPullRequestStatus],
+            binary=False,
+            service='git',
+            operation='pull_request_iteration_statuses_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses',
+        )
+
+    def pull_request_iteration_statuses_update(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        iteration_id: int,
+        project: str | None = None,
+        body: models.JsonPatchDocument,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Iteration Statuses_Update. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'iterationId': iteration_id}, body=body, content_type='application/json-patch+json', accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_iteration_statuses_update', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses')
-    def pull_request_iteration_statuses_delete(self, *, repository_id: str, pull_request_id: int, iteration_id: int, status_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'iterationId': iteration_id,
+            },
+            body=body,
+            content_type='application/json-patch+json',
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_iteration_statuses_update',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses',
+        )
+
+    def pull_request_iteration_statuses_delete(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        iteration_id: int,
+        status_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Iteration Statuses_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses/{statusId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'iterationId': iteration_id, 'statusId': status_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_iteration_statuses_delete', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses/{statusId}')
-    def pull_request_iteration_statuses_get(self, *, repository_id: str, pull_request_id: int, iteration_id: int, status_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestStatus]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses/{statusId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'iterationId': iteration_id,
+                'statusId': status_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_iteration_statuses_delete',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses/{statusId}',
+        )
+
+    def pull_request_iteration_statuses_get(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        iteration_id: int,
+        status_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestStatus]:
         "Pull Request Iteration Statuses_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses/{statusId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'iterationId': iteration_id, 'statusId': status_id}, content_type=None, accept=accept, response_type=models.GitPullRequestStatus, binary=False, service='git', operation='pull_request_iteration_statuses_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses/{statusId}')
-    def pull_request_labels_create(self, *, repository_id: str, pull_request_id: int, project: str | None = None, project_id: str | None = None, body: models.WebApiCreateTagRequestData, accept: str = 'application/json') -> ApiResponse[models.WebApiTagDefinition]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses/{statusId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'iterationId': iteration_id,
+                'statusId': status_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitPullRequestStatus,
+            binary=False,
+            service='git',
+            operation='pull_request_iteration_statuses_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/iterations/{iterationId}/statuses/{statusId}',
+        )
+
+    def pull_request_labels_create(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        project_id: str | None = None,
+        body: models.WebApiCreateTagRequestData,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.WebApiTagDefinition]:
         "Pull Request Labels_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, query={'projectId': project_id}, body=body, content_type='application/json', accept=accept, response_type=models.WebApiTagDefinition, binary=False, service='git', operation='pull_request_labels_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels')
-    def pull_request_labels_list(self, *, repository_id: str, pull_request_id: int, project: str | None = None, project_id: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.WebApiTagDefinition]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            query={
+                'projectId': project_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.WebApiTagDefinition,
+            binary=False,
+            service='git',
+            operation='pull_request_labels_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels',
+        )
+
+    def pull_request_labels_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        project_id: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.WebApiTagDefinition]]:
         "Pull Request Labels_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, query={'projectId': project_id}, content_type=None, accept=accept, response_type=list[models.WebApiTagDefinition], binary=False, service='git', operation='pull_request_labels_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels')
-    def pull_request_labels_delete(self, *, repository_id: str, pull_request_id: int, label_id_or_name: str, project: str | None = None, project_id: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            query={
+                'projectId': project_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.WebApiTagDefinition],
+            binary=False,
+            service='git',
+            operation='pull_request_labels_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels',
+        )
+
+    def pull_request_labels_delete(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        label_id_or_name: str,
+        project: str | None = None,
+        project_id: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Labels_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels/{labelIdOrName}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'labelIdOrName': label_id_or_name}, query={'projectId': project_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_labels_delete', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels/{labelIdOrName}')
-    def pull_request_labels_get(self, *, repository_id: str, pull_request_id: int, label_id_or_name: str, project: str | None = None, project_id: str | None = None, accept: str = 'application/json') -> ApiResponse[models.WebApiTagDefinition]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels/{labelIdOrName}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'labelIdOrName': label_id_or_name,
+            },
+            query={
+                'projectId': project_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_labels_delete',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels/{labelIdOrName}',
+        )
+
+    def pull_request_labels_get(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        label_id_or_name: str,
+        project: str | None = None,
+        project_id: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.WebApiTagDefinition]:
         "Pull Request Labels_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels/{labelIdOrName}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'labelIdOrName': label_id_or_name}, query={'projectId': project_id}, content_type=None, accept=accept, response_type=models.WebApiTagDefinition, binary=False, service='git', operation='pull_request_labels_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels/{labelIdOrName}')
-    def pull_request_properties_list(self, *, repository_id: str, pull_request_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.PropertiesCollection]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels/{labelIdOrName}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'labelIdOrName': label_id_or_name,
+            },
+            query={
+                'projectId': project_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.WebApiTagDefinition,
+            binary=False,
+            service='git',
+            operation='pull_request_labels_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/labels/{labelIdOrName}',
+        )
+
+    def pull_request_properties_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.PropertiesCollection]:
         "Pull Request Properties_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/properties', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, content_type=None, accept=accept, response_type=models.PropertiesCollection, binary=False, service='git', operation='pull_request_properties_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/properties')
-    def pull_request_properties_update(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: models.JsonPatchDocument, accept: str = 'application/json') -> ApiResponse[models.PropertiesCollection]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/properties',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.PropertiesCollection,
+            binary=False,
+            service='git',
+            operation='pull_request_properties_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/properties',
+        )
+
+    def pull_request_properties_update(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: models.JsonPatchDocument,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.PropertiesCollection]:
         "Pull Request Properties_Update. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/properties', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json-patch+json', accept=accept, response_type=models.PropertiesCollection, binary=False, service='git', operation='pull_request_properties_update', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/properties')
-    def pull_request_reviewers_create_pull_request_reviewers(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: list[models.IdentityRef], accept: str = 'application/json') -> ApiResponse[list[models.IdentityRefWithVote]]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/properties',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json-patch+json',
+            accept=accept,
+            response_type=models.PropertiesCollection,
+            binary=False,
+            service='git',
+            operation='pull_request_properties_update',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/properties',
+        )
+
+    def pull_request_reviewers_create_pull_request_reviewers(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: list[models.IdentityRef],
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.IdentityRefWithVote]]:
         "Pull Request Reviewers_Create Pull Request Reviewers. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json', accept=accept, response_type=list[models.IdentityRefWithVote], binary=False, service='git', operation='pull_request_reviewers_create_pull_request_reviewers', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers')
-    def pull_request_reviewers_create_unmaterialized_pull_request_reviewer(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: models.IdentityRefWithVote, accept: str = 'application/json') -> ApiResponse[models.IdentityRefWithVote]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=list[models.IdentityRefWithVote],
+            binary=False,
+            service='git',
+            operation='pull_request_reviewers_create_pull_request_reviewers',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers',
+        )
+
+    def pull_request_reviewers_create_unmaterialized_pull_request_reviewer(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: models.IdentityRefWithVote,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.IdentityRefWithVote]:
         "Pull Request Reviewers_Create Unmaterialized Pull Request Reviewer. Use accept='application/json'."
-        return self._transport.request('PUT', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json', accept=accept, response_type=models.IdentityRefWithVote, binary=False, service='git', operation='pull_request_reviewers_create_unmaterialized_pull_request_reviewer', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers')
-    def pull_request_reviewers_list(self, *, repository_id: str, pull_request_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.IdentityRefWithVote]]:
+        return self._transport.request(
+            'PUT',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.IdentityRefWithVote,
+            binary=False,
+            service='git',
+            operation='pull_request_reviewers_create_unmaterialized_pull_request_reviewer',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers',
+        )
+
+    def pull_request_reviewers_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.IdentityRefWithVote]]:
         "Pull Request Reviewers_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, content_type=None, accept=accept, response_type=list[models.IdentityRefWithVote], binary=False, service='git', operation='pull_request_reviewers_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers')
-    def pull_request_reviewers_update_pull_request_reviewers(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: list[models.IdentityRefWithVote], accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.IdentityRefWithVote],
+            binary=False,
+            service='git',
+            operation='pull_request_reviewers_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers',
+        )
+
+    def pull_request_reviewers_update_pull_request_reviewers(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: list[models.IdentityRefWithVote],
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Reviewers_Update Pull Request Reviewers. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json', accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_reviewers_update_pull_request_reviewers', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers')
-    def pull_request_reviewers_create_pull_request_reviewer(self, *, repository_id: str, pull_request_id: int, reviewer_id: str, project: str | None = None, body: models.IdentityRefWithVote, accept: str = 'application/json') -> ApiResponse[models.IdentityRefWithVote]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_reviewers_update_pull_request_reviewers',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers',
+        )
+
+    def pull_request_reviewers_create_pull_request_reviewer(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        reviewer_id: str,
+        project: str | None = None,
+        body: models.IdentityRefWithVote,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.IdentityRefWithVote]:
         "Pull Request Reviewers_Create Pull Request Reviewer. Use accept='application/json'."
-        return self._transport.request('PUT', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'reviewerId': reviewer_id}, body=body, content_type='application/json', accept=accept, response_type=models.IdentityRefWithVote, binary=False, service='git', operation='pull_request_reviewers_create_pull_request_reviewer', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}')
-    def pull_request_reviewers_delete(self, *, repository_id: str, pull_request_id: int, reviewer_id: str, project: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'PUT',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'reviewerId': reviewer_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.IdentityRefWithVote,
+            binary=False,
+            service='git',
+            operation='pull_request_reviewers_create_pull_request_reviewer',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}',
+        )
+
+    def pull_request_reviewers_delete(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        reviewer_id: str,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Reviewers_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'reviewerId': reviewer_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_reviewers_delete', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}')
-    def pull_request_reviewers_get(self, *, repository_id: str, pull_request_id: int, reviewer_id: str, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.IdentityRefWithVote]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'reviewerId': reviewer_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_reviewers_delete',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}',
+        )
+
+    def pull_request_reviewers_get(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        reviewer_id: str,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.IdentityRefWithVote]:
         "Pull Request Reviewers_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'reviewerId': reviewer_id}, content_type=None, accept=accept, response_type=models.IdentityRefWithVote, binary=False, service='git', operation='pull_request_reviewers_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}')
-    def pull_request_reviewers_update_pull_request_reviewer(self, *, repository_id: str, pull_request_id: int, reviewer_id: str, project: str | None = None, body: models.IdentityRefWithVote, accept: str = 'application/json') -> ApiResponse[models.IdentityRefWithVote]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'reviewerId': reviewer_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.IdentityRefWithVote,
+            binary=False,
+            service='git',
+            operation='pull_request_reviewers_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}',
+        )
+
+    def pull_request_reviewers_update_pull_request_reviewer(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        reviewer_id: str,
+        project: str | None = None,
+        body: models.IdentityRefWithVote,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.IdentityRefWithVote]:
         "Pull Request Reviewers_Update Pull Request Reviewer. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'reviewerId': reviewer_id}, body=body, content_type='application/json', accept=accept, response_type=models.IdentityRefWithVote, binary=False, service='git', operation='pull_request_reviewers_update_pull_request_reviewer', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}')
-    def pull_request_share_share_pull_request(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: models.ShareNotificationContext, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'reviewerId': reviewer_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.IdentityRefWithVote,
+            binary=False,
+            service='git',
+            operation='pull_request_reviewers_update_pull_request_reviewer',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{reviewerId}',
+        )
+
+    def pull_request_share_share_pull_request(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: models.ShareNotificationContext,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Share_Share Pull Request. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/share', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json', accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_share_share_pull_request', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/share')
-    def pull_request_statuses_create(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: models.GitPullRequestStatus, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestStatus]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/share',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_share_share_pull_request',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/share',
+        )
+
+    def pull_request_statuses_create(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: models.GitPullRequestStatus,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestStatus]:
         "Pull Request Statuses_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitPullRequestStatus, binary=False, service='git', operation='pull_request_statuses_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses')
-    def pull_request_statuses_list(self, *, repository_id: str, pull_request_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitPullRequestStatus]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitPullRequestStatus,
+            binary=False,
+            service='git',
+            operation='pull_request_statuses_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses',
+        )
+
+    def pull_request_statuses_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitPullRequestStatus]]:
         "Pull Request Statuses_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, content_type=None, accept=accept, response_type=list[models.GitPullRequestStatus], binary=False, service='git', operation='pull_request_statuses_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses')
-    def pull_request_statuses_update(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: models.JsonPatchDocument, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitPullRequestStatus],
+            binary=False,
+            service='git',
+            operation='pull_request_statuses_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses',
+        )
+
+    def pull_request_statuses_update(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: models.JsonPatchDocument,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Statuses_Update. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json-patch+json', accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_statuses_update', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses')
-    def pull_request_statuses_delete(self, *, repository_id: str, pull_request_id: int, status_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json-patch+json',
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_statuses_update',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses',
+        )
+
+    def pull_request_statuses_delete(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        status_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Statuses_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses/{statusId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'statusId': status_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_statuses_delete', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses/{statusId}')
-    def pull_request_statuses_get(self, *, repository_id: str, pull_request_id: int, status_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestStatus]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses/{statusId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'statusId': status_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_statuses_delete',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses/{statusId}',
+        )
+
+    def pull_request_statuses_get(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        status_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestStatus]:
         "Pull Request Statuses_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses/{statusId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'statusId': status_id}, content_type=None, accept=accept, response_type=models.GitPullRequestStatus, binary=False, service='git', operation='pull_request_statuses_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses/{statusId}')
-    def pull_request_threads_create(self, *, repository_id: str, pull_request_id: int, project: str | None = None, body: models.GitPullRequestCommentThread, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestCommentThread]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses/{statusId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'statusId': status_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitPullRequestStatus,
+            binary=False,
+            service='git',
+            operation='pull_request_statuses_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/statuses/{statusId}',
+        )
+
+    def pull_request_threads_create(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        body: models.GitPullRequestCommentThread,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestCommentThread]:
         "Pull Request Threads_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitPullRequestCommentThread, binary=False, service='git', operation='pull_request_threads_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads')
-    def pull_request_threads_list(self, *, repository_id: str, pull_request_id: int, project: str | None = None, iteration: int | None = None, base_iteration: int | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitPullRequestCommentThread]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitPullRequestCommentThread,
+            binary=False,
+            service='git',
+            operation='pull_request_threads_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads',
+        )
+
+    def pull_request_threads_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        iteration: int | None = None,
+        base_iteration: int | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitPullRequestCommentThread]]:
         "Pull Request Threads_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, query={'$iteration': iteration, '$baseIteration': base_iteration}, content_type=None, accept=accept, response_type=list[models.GitPullRequestCommentThread], binary=False, service='git', operation='pull_request_threads_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads')
-    def pull_request_threads_get(self, *, repository_id: str, pull_request_id: int, thread_id: int, project: str | None = None, iteration: int | None = None, base_iteration: int | None = None, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestCommentThread]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            query={
+                '$iteration': iteration,
+                '$baseIteration': base_iteration,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitPullRequestCommentThread],
+            binary=False,
+            service='git',
+            operation='pull_request_threads_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads',
+        )
+
+    def pull_request_threads_get(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        project: str | None = None,
+        iteration: int | None = None,
+        base_iteration: int | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestCommentThread]:
         "Pull Request Threads_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id}, query={'$iteration': iteration, '$baseIteration': base_iteration}, content_type=None, accept=accept, response_type=models.GitPullRequestCommentThread, binary=False, service='git', operation='pull_request_threads_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}')
-    def pull_request_threads_update(self, *, repository_id: str, pull_request_id: int, thread_id: int, project: str | None = None, body: models.GitPullRequestCommentThread, accept: str = 'application/json') -> ApiResponse[models.GitPullRequestCommentThread]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+            },
+            query={
+                '$iteration': iteration,
+                '$baseIteration': base_iteration,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitPullRequestCommentThread,
+            binary=False,
+            service='git',
+            operation='pull_request_threads_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}',
+        )
+
+    def pull_request_threads_update(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        project: str | None = None,
+        body: models.GitPullRequestCommentThread,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPullRequestCommentThread]:
         "Pull Request Threads_Update. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitPullRequestCommentThread, binary=False, service='git', operation='pull_request_threads_update', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}')
-    def pull_request_thread_comments_create(self, *, repository_id: str, pull_request_id: int, thread_id: int, project: str | None = None, body: models.Comment, accept: str = 'application/json') -> ApiResponse[models.Comment]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitPullRequestCommentThread,
+            binary=False,
+            service='git',
+            operation='pull_request_threads_update',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}',
+        )
+
+    def pull_request_thread_comments_create(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        project: str | None = None,
+        body: models.Comment,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.Comment]:
         "Pull Request Thread Comments_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id}, body=body, content_type='application/json', accept=accept, response_type=models.Comment, binary=False, service='git', operation='pull_request_thread_comments_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments')
-    def pull_request_thread_comments_list(self, *, repository_id: str, pull_request_id: int, thread_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.Comment]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.Comment,
+            binary=False,
+            service='git',
+            operation='pull_request_thread_comments_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments',
+        )
+
+    def pull_request_thread_comments_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.Comment]]:
         "Pull Request Thread Comments_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id}, content_type=None, accept=accept, response_type=list[models.Comment], binary=False, service='git', operation='pull_request_thread_comments_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments')
-    def pull_request_thread_comments_delete(self, *, repository_id: str, pull_request_id: int, thread_id: int, comment_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.Comment],
+            binary=False,
+            service='git',
+            operation='pull_request_thread_comments_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments',
+        )
+
+    def pull_request_thread_comments_delete(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        comment_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Thread Comments_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id, 'commentId': comment_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_thread_comments_delete', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}')
-    def pull_request_thread_comments_get(self, *, repository_id: str, pull_request_id: int, thread_id: int, comment_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.Comment]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+                'commentId': comment_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_thread_comments_delete',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}',
+        )
+
+    def pull_request_thread_comments_get(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        comment_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.Comment]:
         "Pull Request Thread Comments_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id, 'commentId': comment_id}, content_type=None, accept=accept, response_type=models.Comment, binary=False, service='git', operation='pull_request_thread_comments_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}')
-    def pull_request_thread_comments_update(self, *, repository_id: str, pull_request_id: int, thread_id: int, comment_id: int, project: str | None = None, body: models.Comment, accept: str = 'application/json') -> ApiResponse[models.Comment]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+                'commentId': comment_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.Comment,
+            binary=False,
+            service='git',
+            operation='pull_request_thread_comments_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}',
+        )
+
+    def pull_request_thread_comments_update(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        comment_id: int,
+        project: str | None = None,
+        body: models.Comment,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.Comment]:
         "Pull Request Thread Comments_Update. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id, 'commentId': comment_id}, body=body, content_type='application/json', accept=accept, response_type=models.Comment, binary=False, service='git', operation='pull_request_thread_comments_update', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}')
-    def pull_request_comment_likes_create(self, *, repository_id: str, pull_request_id: int, thread_id: int, comment_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+                'commentId': comment_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.Comment,
+            binary=False,
+            service='git',
+            operation='pull_request_thread_comments_update',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}',
+        )
+
+    def pull_request_comment_likes_create(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        comment_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Comment Likes_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id, 'commentId': comment_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_comment_likes_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes')
-    def pull_request_comment_likes_delete(self, *, repository_id: str, pull_request_id: int, thread_id: int, comment_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[Any]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+                'commentId': comment_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_comment_likes_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes',
+        )
+
+    def pull_request_comment_likes_delete(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        comment_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[Any]:
         "Pull Request Comment Likes_Delete. Use accept='application/json'."
-        return self._transport.request('DELETE', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id, 'commentId': comment_id}, content_type=None, accept=accept, response_type=Any, binary=False, service='git', operation='pull_request_comment_likes_delete', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes')
-    def pull_request_comment_likes_list(self, *, repository_id: str, pull_request_id: int, thread_id: int, comment_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.IdentityRef]]:
+        return self._transport.request(
+            'DELETE',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+                'commentId': comment_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=Any,
+            binary=False,
+            service='git',
+            operation='pull_request_comment_likes_delete',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes',
+        )
+
+    def pull_request_comment_likes_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        thread_id: int,
+        comment_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.IdentityRef]]:
         "Pull Request Comment Likes_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id, 'threadId': thread_id, 'commentId': comment_id}, content_type=None, accept=accept, response_type=list[models.IdentityRef], binary=False, service='git', operation='pull_request_comment_likes_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes')
-    def pull_request_work_items_list(self, *, repository_id: str, pull_request_id: int, project: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.ResourceRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+                'threadId': thread_id,
+                'commentId': comment_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.IdentityRef],
+            binary=False,
+            service='git',
+            operation='pull_request_comment_likes_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/threads/{threadId}/comments/{commentId}/likes',
+        )
+
+    def pull_request_work_items_list(
+        self,
+        *,
+        repository_id: str,
+        pull_request_id: int,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.ResourceRef]]:
         "Pull Request Work Items_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/workitems', path_params={'project': project, 'repositoryId': repository_id, 'pullRequestId': pull_request_id}, content_type=None, accept=accept, response_type=list[models.ResourceRef], binary=False, service='git', operation='pull_request_work_items_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/workitems')
-    def pushes_create(self, *, repository_id: str, project: str | None = None, body: models.GitPush, accept: str = 'application/json') -> ApiResponse[models.GitPush]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/workitems',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pullRequestId': pull_request_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.ResourceRef],
+            binary=False,
+            service='git',
+            operation='pull_request_work_items_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/workitems',
+        )
+
+    def pushes_create(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        body: models.GitPush,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPush]:
         "Pushes_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/pushes', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitPush, binary=False, service='git', operation='pushes_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/pushes')
-    def pushes_list(self, *, repository_id: str, project: str | None = None, skip: int | None = None, top: int | None = None, search_criteria_from_date: str | None = None, search_criteria_include_links: bool | None = None, search_criteria_include_ref_updates: bool | None = None, search_criteria_pusher_id: str | UUID | None = None, search_criteria_ref_name: str | None = None, search_criteria_to_date: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitPush]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/pushes',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitPush,
+            binary=False,
+            service='git',
+            operation='pushes_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pushes',
+        )
+
+    def pushes_list(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        skip: int | None = None,
+        top: int | None = None,
+        search_criteria_from_date: str | None = None,
+        search_criteria_include_links: bool | None = None,
+        search_criteria_include_ref_updates: bool | None = None,
+        search_criteria_pusher_id: str | UUID | None = None,
+        search_criteria_ref_name: str | None = None,
+        search_criteria_to_date: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitPush]]:
         "Pushes_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pushes', path_params={'project': project, 'repositoryId': repository_id}, query={'$skip': skip, '$top': top, 'searchCriteria.fromDate': search_criteria_from_date, 'searchCriteria.includeLinks': search_criteria_include_links, 'searchCriteria.includeRefUpdates': search_criteria_include_ref_updates, 'searchCriteria.pusherId': search_criteria_pusher_id, 'searchCriteria.refName': search_criteria_ref_name, 'searchCriteria.toDate': search_criteria_to_date}, content_type=None, accept=accept, response_type=list[models.GitPush], binary=False, service='git', operation='pushes_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/pushes')
-    def pushes_get(self, *, repository_id: str, push_id: int, project: str | None = None, include_commits: int | None = None, include_ref_updates: bool | None = None, accept: str = 'application/json') -> ApiResponse[models.GitPush]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pushes',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                '$skip': skip,
+                '$top': top,
+                'searchCriteria.fromDate': search_criteria_from_date,
+                'searchCriteria.includeLinks': search_criteria_include_links,
+                'searchCriteria.includeRefUpdates': search_criteria_include_ref_updates,
+                'searchCriteria.pusherId': search_criteria_pusher_id,
+                'searchCriteria.refName': search_criteria_ref_name,
+                'searchCriteria.toDate': search_criteria_to_date,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitPush],
+            binary=False,
+            service='git',
+            operation='pushes_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pushes',
+        )
+
+    def pushes_get(
+        self,
+        *,
+        repository_id: str,
+        push_id: int,
+        project: str | None = None,
+        include_commits: int | None = None,
+        include_ref_updates: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitPush]:
         "Pushes_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/pushes/{pushId}', path_params={'project': project, 'repositoryId': repository_id, 'pushId': push_id}, query={'includeCommits': include_commits, 'includeRefUpdates': include_ref_updates}, content_type=None, accept=accept, response_type=models.GitPush, binary=False, service='git', operation='pushes_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/pushes/{pushId}')
-    def refs_list(self, *, repository_id: str, project: str | None = None, filter: str | None = None, include_links: bool | None = None, include_statuses: bool | None = None, include_my_branches: bool | None = None, latest_statuses_only: bool | None = None, peel_tags: bool | None = None, filter_contains: str | None = None, top: int | None = None, continuation_token: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/pushes/{pushId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'pushId': push_id,
+            },
+            query={
+                'includeCommits': include_commits,
+                'includeRefUpdates': include_ref_updates,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitPush,
+            binary=False,
+            service='git',
+            operation='pushes_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/pushes/{pushId}',
+        )
+
+    def refs_list(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        filter: str | None = None,
+        include_links: bool | None = None,
+        include_statuses: bool | None = None,
+        include_my_branches: bool | None = None,
+        latest_statuses_only: bool | None = None,
+        peel_tags: bool | None = None,
+        filter_contains: str | None = None,
+        top: int | None = None,
+        continuation_token: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitRef]]:
         "Refs_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/refs', path_params={'project': project, 'repositoryId': repository_id}, query={'filter': filter, 'includeLinks': include_links, 'includeStatuses': include_statuses, 'includeMyBranches': include_my_branches, 'latestStatusesOnly': latest_statuses_only, 'peelTags': peel_tags, 'filterContains': filter_contains, '$top': top, 'continuationToken': continuation_token}, content_type=None, accept=accept, response_type=list[models.GitRef], binary=False, service='git', operation='refs_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/refs')
-    def refs_update_ref(self, *, repository_id: str, filter: str, project: str | None = None, project_id: str | None = None, body: models.GitRefUpdate, accept: str = 'application/json') -> ApiResponse[models.GitRef]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/refs',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'filter': filter,
+                'includeLinks': include_links,
+                'includeStatuses': include_statuses,
+                'includeMyBranches': include_my_branches,
+                'latestStatusesOnly': latest_statuses_only,
+                'peelTags': peel_tags,
+                'filterContains': filter_contains,
+                '$top': top,
+                'continuationToken': continuation_token,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitRef],
+            binary=False,
+            service='git',
+            operation='refs_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/refs',
+        )
+
+    def refs_update_ref(
+        self,
+        *,
+        repository_id: str,
+        filter: str,
+        project: str | None = None,
+        project_id: str | None = None,
+        body: models.GitRefUpdate,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRef]:
         "Refs_Update Ref. Use accept='application/json'."
-        return self._transport.request('PATCH', '/{project}/_apis/git/repositories/{repositoryId}/refs', path_params={'project': project, 'repositoryId': repository_id}, query={'filter': filter, 'projectId': project_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitRef, binary=False, service='git', operation='refs_update_ref', route_template='/{project}/_apis/git/repositories/{repositoryId}/refs')
-    def refs_update_refs(self, *, repository_id: str, project: str | None = None, project_id: str | None = None, body: list[models.GitRefUpdate], accept: str = 'application/json') -> ApiResponse[list[models.GitRefUpdateResult]]:
+        return self._transport.request(
+            'PATCH',
+            '/{project}/_apis/git/repositories/{repositoryId}/refs',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'filter': filter,
+                'projectId': project_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitRef,
+            binary=False,
+            service='git',
+            operation='refs_update_ref',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/refs',
+        )
+
+    def refs_update_refs(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        project_id: str | None = None,
+        body: list[models.GitRefUpdate],
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitRefUpdateResult]]:
         "Refs_Update Refs. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/refs', path_params={'project': project, 'repositoryId': repository_id}, query={'projectId': project_id}, body=body, content_type='application/json', accept=accept, response_type=list[models.GitRefUpdateResult], binary=False, service='git', operation='refs_update_refs', route_template='/{project}/_apis/git/repositories/{repositoryId}/refs')
-    def reverts_create(self, *, project: str, repository_id: str, body: models.GitAsyncRefOperationParameters, accept: str = 'application/json') -> ApiResponse[models.GitRevert]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/refs',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'projectId': project_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=list[models.GitRefUpdateResult],
+            binary=False,
+            service='git',
+            operation='refs_update_refs',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/refs',
+        )
+
+    def reverts_create(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        body: models.GitAsyncRefOperationParameters,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRevert]:
         "Reverts_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryId}/reverts', path_params={'project': project, 'repositoryId': repository_id}, body=body, content_type='application/json', accept=accept, response_type=models.GitRevert, binary=False, service='git', operation='reverts_create', route_template='/{project}/_apis/git/repositories/{repositoryId}/reverts')
-    def reverts_get_revert_for_ref_name(self, *, project: str, repository_id: str, ref_name: str, accept: str = 'application/json') -> ApiResponse[models.GitRevert]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryId}/reverts',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitRevert,
+            binary=False,
+            service='git',
+            operation='reverts_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/reverts',
+        )
+
+    def reverts_get_revert_for_ref_name(
+        self,
+        *,
+        project: str,
+        repository_id: str,
+        ref_name: str,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRevert]:
         "Reverts_Get Revert For Ref Name. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/reverts', path_params={'project': project, 'repositoryId': repository_id}, query={'refName': ref_name}, content_type=None, accept=accept, response_type=models.GitRevert, binary=False, service='git', operation='reverts_get_revert_for_ref_name', route_template='/{project}/_apis/git/repositories/{repositoryId}/reverts')
-    def reverts_get_revert(self, *, project: str, revert_id: int, repository_id: str, accept: str = 'application/json') -> ApiResponse[models.GitRevert]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/reverts',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'refName': ref_name,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitRevert,
+            binary=False,
+            service='git',
+            operation='reverts_get_revert_for_ref_name',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/reverts',
+        )
+
+    def reverts_get_revert(
+        self,
+        *,
+        project: str,
+        revert_id: int,
+        repository_id: str,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRevert]:
         "Reverts_Get Revert. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/reverts/{revertId}', path_params={'project': project, 'repositoryId': repository_id, 'revertId': revert_id}, content_type=None, accept=accept, response_type=models.GitRevert, binary=False, service='git', operation='reverts_get_revert', route_template='/{project}/_apis/git/repositories/{repositoryId}/reverts/{revertId}')
-    def stats_list(self, *, repository_id: str, project: str | None = None, base_version_descriptor_version: str | None = None, base_version_descriptor_version_options: str | None = None, base_version_descriptor_version_type: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitBranchStats]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/reverts/{revertId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'revertId': revert_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitRevert,
+            binary=False,
+            service='git',
+            operation='reverts_get_revert',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/reverts/{revertId}',
+        )
+
+    def stats_list(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        base_version_descriptor_version: str | None = None,
+        base_version_descriptor_version_options: str | None = None,
+        base_version_descriptor_version_type: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitBranchStats]]:
         "Stats_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/stats/branches', path_params={'project': project, 'repositoryId': repository_id}, query={'baseVersionDescriptor.version': base_version_descriptor_version, 'baseVersionDescriptor.versionOptions': base_version_descriptor_version_options, 'baseVersionDescriptor.versionType': base_version_descriptor_version_type}, content_type=None, accept=accept, response_type=list[models.GitBranchStats], binary=False, service='git', operation='stats_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/stats/branches')
-    def suggestions_list(self, *, repository_id: str, project: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitSuggestion]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/stats/branches',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'baseVersionDescriptor.version': base_version_descriptor_version,
+                'baseVersionDescriptor.versionOptions': base_version_descriptor_version_options,
+                'baseVersionDescriptor.versionType': base_version_descriptor_version_type,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitBranchStats],
+            binary=False,
+            service='git',
+            operation='stats_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/stats/branches',
+        )
+
+    def suggestions_list(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitSuggestion]]:
         "Suggestions_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/suggestions', path_params={'project': project, 'repositoryId': repository_id}, content_type=None, accept=accept, response_type=list[models.GitSuggestion], binary=False, service='git', operation='suggestions_list', route_template='/{project}/_apis/git/repositories/{repositoryId}/suggestions')
-    def trees_get(self, *, repository_id: str, sha1: str, project: str | None = None, project_id: str | None = None, recursive: bool | None = None, file_name: str | None = None, format: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitTreeRef | bytes]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/suggestions',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitSuggestion],
+            binary=False,
+            service='git',
+            operation='suggestions_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/suggestions',
+        )
+
+    def trees_get(
+        self,
+        *,
+        repository_id: str,
+        sha1: str,
+        project: str | None = None,
+        project_id: str | None = None,
+        recursive: bool | None = None,
+        file_name: str | None = None,
+        format: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitTreeRef | bytes]:
         "Trees_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/trees/{sha1}', path_params={'project': project, 'repositoryId': repository_id, 'sha1': sha1}, query={'projectId': project_id, 'recursive': recursive, 'fileName': file_name, '$format': format}, content_type=None, accept=accept, response_type=models.GitTreeRef | bytes, binary=False, service='git', operation='trees_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/trees/{sha1}')
-    def merge_bases_list(self, *, repository_name_or_id: str, commit_id: str, other_commit_id: str, project: str | None = None, other_collection_id: str | UUID | None = None, other_repository_id: str | UUID | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitCommitRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/trees/{sha1}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+                'sha1': sha1,
+            },
+            query={
+                'projectId': project_id,
+                'recursive': recursive,
+                'fileName': file_name,
+                '$format': format,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitTreeRef | bytes,
+            binary=False,
+            service='git',
+            operation='trees_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/trees/{sha1}',
+        )
+
+    def merge_bases_list(
+        self,
+        *,
+        repository_name_or_id: str,
+        commit_id: str,
+        other_commit_id: str,
+        project: str | None = None,
+        other_collection_id: str | UUID | None = None,
+        other_repository_id: str | UUID | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitCommitRef]]:
         "Merge Bases_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryNameOrId}/commits/{commitId}/mergebases', path_params={'project': project, 'repositoryNameOrId': repository_name_or_id, 'commitId': commit_id}, query={'otherCommitId': other_commit_id, 'otherCollectionId': other_collection_id, 'otherRepositoryId': other_repository_id}, content_type=None, accept=accept, response_type=list[models.GitCommitRef], binary=False, service='git', operation='merge_bases_list', route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/commits/{commitId}/mergebases')
-    def forks_list(self, *, repository_name_or_id: str, collection_id: str | UUID, project: str | None = None, include_links: bool | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitRepositoryRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryNameOrId}/commits/{commitId}/mergebases',
+            path_params={
+                'project': project,
+                'repositoryNameOrId': repository_name_or_id,
+                'commitId': commit_id,
+            },
+            query={
+                'otherCommitId': other_commit_id,
+                'otherCollectionId': other_collection_id,
+                'otherRepositoryId': other_repository_id,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitCommitRef],
+            binary=False,
+            service='git',
+            operation='merge_bases_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/commits/{commitId}/mergebases',
+        )
+
+    def forks_list(
+        self,
+        *,
+        repository_name_or_id: str,
+        collection_id: str | UUID,
+        project: str | None = None,
+        include_links: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitRepositoryRef]]:
         "Forks_List. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryNameOrId}/forks/{collectionId}', path_params={'project': project, 'repositoryNameOrId': repository_name_or_id, 'collectionId': collection_id}, query={'includeLinks': include_links}, content_type=None, accept=accept, response_type=list[models.GitRepositoryRef], binary=False, service='git', operation='forks_list', route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/forks/{collectionId}')
-    def forks_create_fork_sync_request(self, *, repository_name_or_id: str, project: str | None = None, include_links: bool | None = None, body: models.GitForkSyncRequestParameters, accept: str = 'application/json') -> ApiResponse[models.GitForkSyncRequest]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryNameOrId}/forks/{collectionId}',
+            path_params={
+                'project': project,
+                'repositoryNameOrId': repository_name_or_id,
+                'collectionId': collection_id,
+            },
+            query={
+                'includeLinks': include_links,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitRepositoryRef],
+            binary=False,
+            service='git',
+            operation='forks_list',
+            route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/forks/{collectionId}',
+        )
+
+    def forks_create_fork_sync_request(
+        self,
+        *,
+        repository_name_or_id: str,
+        project: str | None = None,
+        include_links: bool | None = None,
+        body: models.GitForkSyncRequestParameters,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitForkSyncRequest]:
         "Forks_Create fork sync request. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests', path_params={'project': project, 'repositoryNameOrId': repository_name_or_id}, query={'includeLinks': include_links}, body=body, content_type='application/json', accept=accept, response_type=models.GitForkSyncRequest, binary=False, service='git', operation='forks_create_fork_sync_request', route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests')
-    def forks_get_fork_sync_requests(self, *, repository_name_or_id: str, project: str | None = None, include_abandoned: bool | None = None, include_links: bool | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitForkSyncRequest]]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests',
+            path_params={
+                'project': project,
+                'repositoryNameOrId': repository_name_or_id,
+            },
+            query={
+                'includeLinks': include_links,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitForkSyncRequest,
+            binary=False,
+            service='git',
+            operation='forks_create_fork_sync_request',
+            route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests',
+        )
+
+    def forks_get_fork_sync_requests(
+        self,
+        *,
+        repository_name_or_id: str,
+        project: str | None = None,
+        include_abandoned: bool | None = None,
+        include_links: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitForkSyncRequest]]:
         "Forks_Get Fork Sync Requests. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests', path_params={'project': project, 'repositoryNameOrId': repository_name_or_id}, query={'includeAbandoned': include_abandoned, 'includeLinks': include_links}, content_type=None, accept=accept, response_type=list[models.GitForkSyncRequest], binary=False, service='git', operation='forks_get_fork_sync_requests', route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests')
-    def forks_get_fork_sync_request(self, *, repository_name_or_id: str, fork_sync_operation_id: int, project: str | None = None, include_links: bool | None = None, accept: str = 'application/json') -> ApiResponse[models.GitForkSyncRequest]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests',
+            path_params={
+                'project': project,
+                'repositoryNameOrId': repository_name_or_id,
+            },
+            query={
+                'includeAbandoned': include_abandoned,
+                'includeLinks': include_links,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitForkSyncRequest],
+            binary=False,
+            service='git',
+            operation='forks_get_fork_sync_requests',
+            route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests',
+        )
+
+    def forks_get_fork_sync_request(
+        self,
+        *,
+        repository_name_or_id: str,
+        fork_sync_operation_id: int,
+        project: str | None = None,
+        include_links: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitForkSyncRequest]:
         "Forks_Get fork sync request. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests/{forkSyncOperationId}', path_params={'project': project, 'repositoryNameOrId': repository_name_or_id, 'forkSyncOperationId': fork_sync_operation_id}, query={'includeLinks': include_links}, content_type=None, accept=accept, response_type=models.GitForkSyncRequest, binary=False, service='git', operation='forks_get_fork_sync_request', route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests/{forkSyncOperationId}')
-    def merges_create(self, *, project: str, repository_name_or_id: str, include_links: bool | None = None, body: models.GitMergeParameters, accept: str = 'application/json') -> ApiResponse[models.GitMerge]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests/{forkSyncOperationId}',
+            path_params={
+                'project': project,
+                'repositoryNameOrId': repository_name_or_id,
+                'forkSyncOperationId': fork_sync_operation_id,
+            },
+            query={
+                'includeLinks': include_links,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitForkSyncRequest,
+            binary=False,
+            service='git',
+            operation='forks_get_fork_sync_request',
+            route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/forkSyncRequests/{forkSyncOperationId}',
+        )
+
+    def merges_create(
+        self,
+        *,
+        project: str,
+        repository_name_or_id: str,
+        include_links: bool | None = None,
+        body: models.GitMergeParameters,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitMerge]:
         "Merges_Create. Use accept='application/json'."
-        return self._transport.request('POST', '/{project}/_apis/git/repositories/{repositoryNameOrId}/merges', path_params={'project': project, 'repositoryNameOrId': repository_name_or_id}, query={'includeLinks': include_links}, body=body, content_type='application/json', accept=accept, response_type=models.GitMerge, binary=False, service='git', operation='merges_create', route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/merges')
-    def merges_get(self, *, project: str, repository_name_or_id: str, merge_operation_id: int, include_links: bool | None = None, accept: str = 'application/json') -> ApiResponse[models.GitMerge]:
+        return self._transport.request(
+            'POST',
+            '/{project}/_apis/git/repositories/{repositoryNameOrId}/merges',
+            path_params={
+                'project': project,
+                'repositoryNameOrId': repository_name_or_id,
+            },
+            query={
+                'includeLinks': include_links,
+            },
+            body=body,
+            content_type='application/json',
+            accept=accept,
+            response_type=models.GitMerge,
+            binary=False,
+            service='git',
+            operation='merges_create',
+            route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/merges',
+        )
+
+    def merges_get(
+        self,
+        *,
+        project: str,
+        repository_name_or_id: str,
+        merge_operation_id: int,
+        include_links: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitMerge]:
         "Merges_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryNameOrId}/merges/{mergeOperationId}', path_params={'project': project, 'repositoryNameOrId': repository_name_or_id, 'mergeOperationId': merge_operation_id}, query={'includeLinks': include_links}, content_type=None, accept=accept, response_type=models.GitMerge, binary=False, service='git', operation='merges_get', route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/merges/{mergeOperationId}')
-    def repositories_get_repository_with_parent(self, *, repository_id: str, include_parent: bool, project: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitRepository]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryNameOrId}/merges/{mergeOperationId}',
+            path_params={
+                'project': project,
+                'repositoryNameOrId': repository_name_or_id,
+                'mergeOperationId': merge_operation_id,
+            },
+            query={
+                'includeLinks': include_links,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitMerge,
+            binary=False,
+            service='git',
+            operation='merges_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryNameOrId}/merges/{mergeOperationId}',
+        )
+
+    def repositories_get_repository_with_parent(
+        self,
+        *,
+        repository_id: str,
+        include_parent: bool,
+        project: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitRepository]:
         "Repositories_Get Repository With Parent. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}', path_params={'project': project, 'repositoryId': repository_id}, query={'includeParent': include_parent}, content_type=None, accept=accept, response_type=models.GitRepository, binary=False, service='git', operation='repositories_get_repository_with_parent', route_template='/{project}/_apis/git/repositories/{repositoryId}')
-    def commits_get_commits(self, *, repository_id: str, project: str | None = None, search_criteria_skip: int | None = None, search_criteria_top: int | None = None, search_criteria_author: str | None = None, search_criteria_compare_version_version: str | None = None, search_criteria_compare_version_version_options: str | None = None, search_criteria_compare_version_version_type: str | None = None, search_criteria_exclude_deletes: bool | None = None, search_criteria_from_commit_id: str | None = None, search_criteria_from_date: str | None = None, search_criteria_history_mode: str | None = None, search_criteria_ids: list[str] | None = None, search_criteria_include_links: bool | None = None, search_criteria_include_push_data: bool | None = None, search_criteria_include_user_image_url: bool | None = None, search_criteria_include_work_items: bool | None = None, search_criteria_item_path: str | None = None, search_criteria_item_version_version: str | None = None, search_criteria_item_version_version_options: str | None = None, search_criteria_item_version_version_type: str | None = None, search_criteria_show_oldest_commits_first: bool | None = None, search_criteria_to_commit_id: str | None = None, search_criteria_to_date: str | None = None, search_criteria_user: str | None = None, accept: str = 'application/json') -> ApiResponse[list[models.GitCommitRef]]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'includeParent': include_parent,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitRepository,
+            binary=False,
+            service='git',
+            operation='repositories_get_repository_with_parent',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}',
+        )
+
+    def commits_get_commits(
+        self,
+        *,
+        repository_id: str,
+        project: str | None = None,
+        search_criteria_skip: int | None = None,
+        search_criteria_top: int | None = None,
+        search_criteria_author: str | None = None,
+        search_criteria_compare_version_version: str | None = None,
+        search_criteria_compare_version_version_options: str | None = None,
+        search_criteria_compare_version_version_type: str | None = None,
+        search_criteria_exclude_deletes: bool | None = None,
+        search_criteria_from_commit_id: str | None = None,
+        search_criteria_from_date: str | None = None,
+        search_criteria_history_mode: str | None = None,
+        search_criteria_ids: list[str] | None = None,
+        search_criteria_include_links: bool | None = None,
+        search_criteria_include_push_data: bool | None = None,
+        search_criteria_include_user_image_url: bool | None = None,
+        search_criteria_include_work_items: bool | None = None,
+        search_criteria_item_path: str | None = None,
+        search_criteria_item_version_version: str | None = None,
+        search_criteria_item_version_version_options: str | None = None,
+        search_criteria_item_version_version_type: str | None = None,
+        search_criteria_show_oldest_commits_first: bool | None = None,
+        search_criteria_to_commit_id: str | None = None,
+        search_criteria_to_date: str | None = None,
+        search_criteria_user: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[list[models.GitCommitRef]]:
         "Commits_Get Commits. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/commits', path_params={'project': project, 'repositoryId': repository_id}, query={'searchCriteria.$skip': search_criteria_skip, 'searchCriteria.$top': search_criteria_top, 'searchCriteria.author': search_criteria_author, 'searchCriteria.compareVersion.version': search_criteria_compare_version_version, 'searchCriteria.compareVersion.versionOptions': search_criteria_compare_version_version_options, 'searchCriteria.compareVersion.versionType': search_criteria_compare_version_version_type, 'searchCriteria.excludeDeletes': search_criteria_exclude_deletes, 'searchCriteria.fromCommitId': search_criteria_from_commit_id, 'searchCriteria.fromDate': search_criteria_from_date, 'searchCriteria.historyMode': search_criteria_history_mode, 'searchCriteria.ids': search_criteria_ids, 'searchCriteria.includeLinks': search_criteria_include_links, 'searchCriteria.includePushData': search_criteria_include_push_data, 'searchCriteria.includeUserImageUrl': search_criteria_include_user_image_url, 'searchCriteria.includeWorkItems': search_criteria_include_work_items, 'searchCriteria.itemPath': search_criteria_item_path, 'searchCriteria.itemVersion.version': search_criteria_item_version_version, 'searchCriteria.itemVersion.versionOptions': search_criteria_item_version_version_options, 'searchCriteria.itemVersion.versionType': search_criteria_item_version_version_type, 'searchCriteria.showOldestCommitsFirst': search_criteria_show_oldest_commits_first, 'searchCriteria.toCommitId': search_criteria_to_commit_id, 'searchCriteria.toDate': search_criteria_to_date, 'searchCriteria.user': search_criteria_user}, query_formats={'searchCriteria.ids': 'csv'}, content_type=None, accept=accept, response_type=list[models.GitCommitRef], binary=False, service='git', operation='commits_get_commits', route_template='/{project}/_apis/git/repositories/{repositoryId}/commits')
-    def items_get(self, *, repository_id: str, path: str, project: str | None = None, scope_path: str | None = None, recursion_level: str | None = None, include_content_metadata: bool | None = None, latest_processed_change: bool | None = None, download: bool | None = None, format: str | None = None, version_descriptor_version: str | None = None, version_descriptor_version_options: str | None = None, version_descriptor_version_type: str | None = None, include_content: bool | None = None, resolve_lfs: bool | None = None, sanitize: bool | None = None, accept: str = 'application/json') -> ApiResponse[models.GitItem | bytes]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/commits',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'searchCriteria.$skip': search_criteria_skip,
+                'searchCriteria.$top': search_criteria_top,
+                'searchCriteria.author': search_criteria_author,
+                'searchCriteria.compareVersion.version': search_criteria_compare_version_version,
+                'searchCriteria.compareVersion.versionOptions': search_criteria_compare_version_version_options,
+                'searchCriteria.compareVersion.versionType': search_criteria_compare_version_version_type,
+                'searchCriteria.excludeDeletes': search_criteria_exclude_deletes,
+                'searchCriteria.fromCommitId': search_criteria_from_commit_id,
+                'searchCriteria.fromDate': search_criteria_from_date,
+                'searchCriteria.historyMode': search_criteria_history_mode,
+                'searchCriteria.ids': search_criteria_ids,
+                'searchCriteria.includeLinks': search_criteria_include_links,
+                'searchCriteria.includePushData': search_criteria_include_push_data,
+                'searchCriteria.includeUserImageUrl': search_criteria_include_user_image_url,
+                'searchCriteria.includeWorkItems': search_criteria_include_work_items,
+                'searchCriteria.itemPath': search_criteria_item_path,
+                'searchCriteria.itemVersion.version': search_criteria_item_version_version,
+                'searchCriteria.itemVersion.versionOptions': search_criteria_item_version_version_options,
+                'searchCriteria.itemVersion.versionType': search_criteria_item_version_version_type,
+                'searchCriteria.showOldestCommitsFirst': search_criteria_show_oldest_commits_first,
+                'searchCriteria.toCommitId': search_criteria_to_commit_id,
+                'searchCriteria.toDate': search_criteria_to_date,
+                'searchCriteria.user': search_criteria_user,
+            },
+            query_formats={'searchCriteria.ids': 'csv'},
+            content_type=None,
+            accept=accept,
+            response_type=list[models.GitCommitRef],
+            binary=False,
+            service='git',
+            operation='commits_get_commits',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/commits',
+        )
+
+    def items_get(
+        self,
+        *,
+        repository_id: str,
+        path: str,
+        project: str | None = None,
+        scope_path: str | None = None,
+        recursion_level: str | None = None,
+        include_content_metadata: bool | None = None,
+        latest_processed_change: bool | None = None,
+        download: bool | None = None,
+        format: str | None = None,
+        version_descriptor_version: str | None = None,
+        version_descriptor_version_options: str | None = None,
+        version_descriptor_version_type: str | None = None,
+        include_content: bool | None = None,
+        resolve_lfs: bool | None = None,
+        sanitize: bool | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitItem | bytes]:
         "Items_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/items', path_params={'project': project, 'repositoryId': repository_id}, query={'path': path, 'scopePath': scope_path, 'recursionLevel': recursion_level, 'includeContentMetadata': include_content_metadata, 'latestProcessedChange': latest_processed_change, 'download': download, '$format': format, 'versionDescriptor.version': version_descriptor_version, 'versionDescriptor.versionOptions': version_descriptor_version_options, 'versionDescriptor.versionType': version_descriptor_version_type, 'includeContent': include_content, 'resolveLfs': resolve_lfs, 'sanitize': sanitize}, content_type=None, accept=accept, response_type=models.GitItem | bytes, binary=False, service='git', operation='items_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/items')
-    def stats_get(self, *, repository_id: str, name: str, project: str | None = None, base_version_descriptor_version: str | None = None, base_version_descriptor_version_options: str | None = None, base_version_descriptor_version_type: str | None = None, accept: str = 'application/json') -> ApiResponse[models.GitBranchStats]:
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/items',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'path': path,
+                'scopePath': scope_path,
+                'recursionLevel': recursion_level,
+                'includeContentMetadata': include_content_metadata,
+                'latestProcessedChange': latest_processed_change,
+                'download': download,
+                '$format': format,
+                'versionDescriptor.version': version_descriptor_version,
+                'versionDescriptor.versionOptions': version_descriptor_version_options,
+                'versionDescriptor.versionType': version_descriptor_version_type,
+                'includeContent': include_content,
+                'resolveLfs': resolve_lfs,
+                'sanitize': sanitize,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitItem | bytes,
+            binary=False,
+            service='git',
+            operation='items_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/items',
+        )
+
+    def stats_get(
+        self,
+        *,
+        repository_id: str,
+        name: str,
+        project: str | None = None,
+        base_version_descriptor_version: str | None = None,
+        base_version_descriptor_version_options: str | None = None,
+        base_version_descriptor_version_type: str | None = None,
+        accept: str = 'application/json',
+    ) -> ApiResponse[models.GitBranchStats]:
         "Stats_Get. Use accept='application/json'."
-        return self._transport.request('GET', '/{project}/_apis/git/repositories/{repositoryId}/stats/branches', path_params={'project': project, 'repositoryId': repository_id}, query={'name': name, 'baseVersionDescriptor.version': base_version_descriptor_version, 'baseVersionDescriptor.versionOptions': base_version_descriptor_version_options, 'baseVersionDescriptor.versionType': base_version_descriptor_version_type}, content_type=None, accept=accept, response_type=models.GitBranchStats, binary=False, service='git', operation='stats_get', route_template='/{project}/_apis/git/repositories/{repositoryId}/stats/branches')
+        return self._transport.request(
+            'GET',
+            '/{project}/_apis/git/repositories/{repositoryId}/stats/branches',
+            path_params={
+                'project': project,
+                'repositoryId': repository_id,
+            },
+            query={
+                'name': name,
+                'baseVersionDescriptor.version': base_version_descriptor_version,
+                'baseVersionDescriptor.versionOptions': base_version_descriptor_version_options,
+                'baseVersionDescriptor.versionType': base_version_descriptor_version_type,
+            },
+            content_type=None,
+            accept=accept,
+            response_type=models.GitBranchStats,
+            binary=False,
+            service='git',
+            operation='stats_get',
+            route_template='/{project}/_apis/git/repositories/{repositoryId}/stats/branches',
+        )
