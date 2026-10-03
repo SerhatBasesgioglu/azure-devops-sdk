@@ -3,6 +3,9 @@ from uuid import UUID
 
 from pydantic import BaseModel
 
+from .generated.git import GitRepository as Repository
+from .generated.pipelines import Pipeline
+
 T = TypeVar("T")
 
 
@@ -14,8 +17,3 @@ class AdoList(BaseModel, Generic[T]):
 class Project(BaseModel):
     id: UUID
     name: str
-
-class Repository(BaseModel):
-    id: str
-    name: str
-
